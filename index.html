@@ -463,9 +463,9 @@
             <div id="help-changelog" class="tab-content" style="max-height: 60vh; overflow-y: auto; padding: 15px;">
                 <h4>v1.2.0 (当前版本)</h4>
                 <ul>
-                    <li><b>【更名】</b> 软件更名为 <b>Blokko</b>。</li>
+                    <li><b>【品牌】</b> 软件正式更名为 <b>Blokko</b>。</li>
                     <li><b>【新增】</b> <b>图标系统完全升级！</b> 引入 Iconify 框架，支持数万个图标并提供实时搜索功能。</li>
-                    <li><b>【新增】</b> <b>标签系统重做！</b> 现在每个标签都可以独立设置图标了！编辑器升级为更直观的标签管理器。</li>
+                    <li><b>【新增】</b> <b>标签系统重做！</b> 现在每个标签都可以独立设置图标，编辑器升级为更直观的标签管理器。</li>
                     <li><b>【新增】</b> <b>预览锁定模式</b>，解决移动端滑动与拖拽冲突问题。</li>
                     <li><b>【新增】</b> <b>自定义导出宽度</b>功能，手机端也能自由控制导出图片的尺寸和比例。</li>
                     <li><b>【新增】</b> <b>一键重置</b>功能，可快速恢复到初始默认模板。</li>
@@ -477,9 +477,9 @@
             </div>
             <div id="help-about" class="tab-content" style="max-height: 60vh; overflow-y: auto; padding: 15px;">
                 <h4>关于 Blokko</h4>
-                <p>Blokko是一个方便大家快速制作扩列/自荐/置顶图的小工具！</p>
+                <p>Blokko 是一款高度可定制化的个人介绍页面生成工具，旨在帮助用户通过简单、直观的方式，创造出美观、独特的个人名片。</p>
                 <p><strong>作者：</strong> 四十七</p>
-                <p>如果你在使用中遇到BUG，可以通过链接私信我！</p>
+                <p>如果你在使用中遇到任何问题，或有好的建议，欢迎通过以下方式联系我：</p>
                 <p><a href="https://weibo.com/u/5095783616" target="_blank" rel="noopener noreferrer"><strong>我的微博主页</strong></a></p>
                 <hr>
                 <h4>致谢</h4>
@@ -501,7 +501,7 @@
         <div class="modal-container">
             <h3>选择图标</h3>
             <div class="form-group">
-                <input type="text" id="icon-search" placeholder="搜索图标 (例如: bilibili, music, arrow，可以尝试搜索拼音和英文名)..." class="form-control">
+                <input type="text" id="icon-search" placeholder="搜索图标 (例如: bilibili, music, arrow)..." class="form-control">
             </div>
             <div id="icon-grid"></div>
             <div class="modal-actions">
@@ -1182,23 +1182,23 @@
                     }
 
                     if (styles.headerBgMode === 'gradient') {
-                        const gradient = `linear-gradient(${styles。headerBgGradientAngle}deg, ${this.hexToRgba(styles.headerBgGradientStart, styles.headerOpacity)}, ${this.hexToRgba(styles.headerBgGradientEnd, styles.headerOpacity)})`;
+                        const gradient = `linear-gradient(${styles.headerBgGradientAngle}deg, ${this.hexToRgba(styles.headerBgGradientStart, styles.headerOpacity)}, ${this.hexToRgba(styles.headerBgGradientEnd, styles.headerOpacity)})`;
                         this.elements.previewHeader.style.background = gradient;
                     } else { // solid
                          this.elements.previewHeader.style.background = this.hexToRgba(styles.headerBgColor, styles.headerOpacity);
                     }
                     
-                    this。elements。previewHeader.style.color = styles.headerTextColor;
-                    this。elements。previewNickname.style.color = this.state.personalInfo.nicknameColor;
+                    this.elements.previewHeader.style.color = styles.headerTextColor;
+                    this.elements.previewNickname.style.color = this.state.personalInfo.nicknameColor;
                     this.elements.previewSubtitle.style.color = this.state.personalInfo.subtitleColor;
                     this.elements.previewBio.style.color = this.state.personalInfo.bioColor;
                     
-                    this。elements.pageImageControls.style。display = styles.pageBgImageDataUrl ? 'block' : 'none';
-                }，
+                    this.elements.pageImageControls.style.display = styles.pageBgImageDataUrl ? 'block' : 'none';
+                },
 
                 renderEditorBlocks(isInitial = false) {
-                    const list = this。elements.editorBlocksList;
-                    list.innerHTML = this.state.blocks.length ? this.state。blocks.map(b => this.createEditorBlockHTML(b, isInitial)).join('') : '<div class="empty-placeholder">暂无区块</div>';
+                    const list = this.elements.editorBlocksList;
+                    list.innerHTML = this.state.blocks.length ? this.state.blocks.map(b => this.createEditorBlockHTML(b, isInitial)).join('') : '<div class="empty-placeholder">暂无区块</div>';
                     this.state.blocks.forEach(block => {
                         const blockEl = list.querySelector(`.editor-block[data-block-id="${block.id}"]`);
                         if (!blockEl) return;
@@ -1209,27 +1209,27 @@
 
                 renderPreviewBlocks() {
                     this.elements.previewBlocksContainer.innerHTML = this.state.blocks.length ? this.state.blocks.map(b => `<div class="preview-block-wrapper" data-block-id="${b.id}">${this.createPreviewBlockHTML(b)}</div>`).join('') : '<div class="empty-placeholder">(预览区) 无区块</div>';
-                }，
+                },
 
-                createEditorBlockHTML(block， isInitial = false) {
-                    let 设置 = '', content = '';
+                createEditorBlockHTML(block, isInitial = false) {
+                    let settings = '', content = '';
                     const upDownBtns = `<div class="up-down-btns"><button class="btn btn-default block-up-btn">↑</button><button class="btn btn-default block-down-btn">↓</button></div>`;
                     
-                    if (block。输入 === 'text') {
-                        设置 = `<label>布局:</label><input type="radio" data-setting-key="layout" name="block-layout-${block。id}" value="single" ${block.settings.layout === 'single' ? 'checked' : ''}><label>单</label><input type="radio" data-setting-key="layout" name="block-layout-${block.id}" value="dual" ${block.settings.layout === 'dual' ? 'checked' : ''}><label>双</label>`;
+                    if (block.type === 'text') {
+                        settings = `<label>布局:</label><input type="radio" data-setting-key="layout" name="block-layout-${block.id}" value="single" ${block.settings.layout === 'single' ? 'checked' : ''}><label>单</label><input type="radio" data-setting-key="layout" name="block-layout-${block.id}" value="dual" ${block.settings.layout === 'dual' ? 'checked' : ''}><label>双</label>`;
                         content = `<div class="card-editors-list"></div><button class="btn btn-default add-card-btn" style="margin-top: 15px;">➕ 添加卡片</button>`;
                     } else if (block.type === 'image') {
                         const s = block.settings;
                         const useGlobalStyle = s.useGlobalStyle !== false;
                         const followGlobalOpacity = s.followGlobalOpacity !== false;
-                        设置 = `<label>布局:</label><input data-setting-key="layout" type="radio" name="block-layout-${block.id}" value="1" ${s。layout === '1' ? 'checked' : ''}><label>1</label><input data-setting-key="layout" type="radio" name="block-layout-${block。id}" value="2" ${s.layout === '2' ? 'checked' : ''}><label>2</label><input data-setting-key="layout" type="radio" name="block-layout-${block.id}" value="3" ${s.layout === '3' ? 'checked' : ''}><label>3</label>`;
+                        settings = `<label>布局:</label><input data-setting-key="layout" type="radio" name="block-layout-${block.id}" value="1" ${s.layout === '1' ? 'checked' : ''}><label>1</label><input data-setting-key="layout" type="radio" name="block-layout-${block.id}" value="2" ${s.layout === '2' ? 'checked' : ''}><label>2</label><input data-setting-key="layout" type="radio" name="block-layout-${block.id}" value="3" ${s.layout === '3' ? 'checked' : ''}><label>3</label>`;
                         content = `<div class="image-upload-area"><input type="file" class="image-upload-input" multiple accept="image/*" style="display: none;">点击上传图片</div>
                                    <div class="image-thumbnails-grid"></div>
                                    <hr class="separator">
                                    <div class="checkbox-group form-group"><label><input type="checkbox" data-setting-key="useGlobalStyle" ${useGlobalStyle ? 'checked':''}>使用全局卡片背景</label></div>
                                    <div class="image-block-style-override" style="${useGlobalStyle ? 'display:none;' : ''}">
                                        <div class="color-control-row">
-                                           <div class="color-control-group"><label>背景色:</label><div class="input-group"><input type="color" data-setting-key="bgColor" value="${s。bgColor || ''}"><input type="text" class="color-hex-input" data-setting-key="bgColor" value="${s。bgColor || ''}"></div></div>
+                                           <div class="color-control-group"><label>背景色:</label><div class="input-group"><input type="color" data-setting-key="bgColor" value="${s.bgColor || ''}"><input type="text" class="color-hex-input" data-setting-key="bgColor" value="${s.bgColor || ''}"></div></div>
                                        </div>
                                    </div>
                                     <div class="checkbox-group form-group"><label><input type="checkbox" data-setting-key="followGlobalOpacity" ${followGlobalOpacity ? 'checked' : ''}>跟随全局不透明度</label></div>
@@ -1318,39 +1318,39 @@
                     if (!innerEl) return;
                     
                     if (parseFloat(finalOpacity) === 0) {
-                        innerEl。style。setProperty('--card-bg-final'， 'transparent');
+                        innerEl.style.setProperty('--card-bg-final', 'transparent');
                         innerEl.style.boxShadow = 'none';
                         innerEl.style.border = 'none';
                     } else {
                         const finalTextColor = cardData.textColor || g.textColor;
                         let finalBg;
                         if (cardData.bgImageDataUrl) {
-                            finalBg = `url(${cardData。bgImageDataUrl})`;
+                            finalBg = `url(${cardData.bgImageDataUrl})`;
                         } else if (cardData.bgColor) {
-                            finalBg = this。hexToRgba(cardData。bgColor， finalOpacity);
+                            finalBg = this.hexToRgba(cardData.bgColor, finalOpacity);
                         } else {
                             if (g.bgMode === 'gradient') {
                                 finalBg = `linear-gradient(${g.bgGradientAngle}deg, ${this.hexToRgba(g.bgGradientStart, finalOpacity)}, ${this.hexToRgba(g.bgGradientEnd, finalOpacity)})`;
                             } else {
-                                finalBg = this。hexToRgba(g。bgColor， finalOpacity);
+                                finalBg = this.hexToRgba(g.bgColor, finalOpacity);
                             }
                         }
                         
                         innerEl.style.setProperty('--card-bg-final', finalBg);
                         innerEl.style.setProperty('--card-text-color', finalTextColor);
                         innerEl.style.textAlign = use('textAlign', cardData.textAlign);
-                        innerEl.style.fontSize = cardData。fontSize || 'inherit'; 
+                        innerEl.style.fontSize = cardData.fontSize || 'inherit'; 
                         innerEl.style.setProperty('--card-font-weight', cardData.fontWeight || 'normal');
                         innerEl.style.setProperty('--active-card-text-shadow', cardData.textShadowEnabled ? 'var(--preset-text-shadow)' : 'none');
                         
-                        innerEl.style。setProperty('--card-overlay-color'， cardData。overlayColor || '#FFF');
+                        innerEl.style.setProperty('--card-overlay-color', cardData.overlayColor || '#FFF');
                         const overlayOpacity = cardData.bgImageDataUrl ? (cardData.overlayOpacity ?? 0.5) : 0;
-                        innerEl。style。setProperty('--card-overlay-opacity'， parseFloat(overlayOpacity) > 0 ? overlayOpacity : 0);
+                        innerEl.style.setProperty('--card-overlay-opacity', parseFloat(overlayOpacity) > 0 ? overlayOpacity : 0);
                         
-                        innerEl。style。boxShadow = 'var(--active-card-shadow)';
-                        innerEl。style。border = 'var(--active-card-border)';
+                        innerEl.style.boxShadow = 'var(--active-card-shadow)';
+                        innerEl.style.border = 'var(--active-card-border)';
                     }
-                }，
+                },
 
                 updateState(keyPath, value, pushHistory = true) {
                     if (pushHistory && !this.isRestoringState) this.pushHistory();
@@ -1432,16 +1432,16 @@
                     }
                 },
 
-                deleteCard(blockId， cardId) {
+                deleteCard(blockId, cardId) {
                     const block = this.findBlock(blockId);
                     if (!block) return;
                     
                     const cardEl = this.elements.previewBlocksContainer.querySelector(`.preview-card[data-card-id="${cardId}"]`);
                     
                     const doDelete = () => {
-                        this。pushHistory();
-                        block。cards = block.cards.filter(c => c.id !== cardId);
-                        this。debouncedSaveToLocal();
+                        this.pushHistory();
+                        block.cards = block.cards.filter(c => c.id !== cardId);
+                        this.debouncedSaveToLocal();
                         this.renderEditorBlockById(blockId);
                         this.renderPreviewBlockById(blockId);
                         this.showToast('卡片已删除', 'info');
@@ -1449,22 +1449,22 @@
 
                     if (cardEl) {
                         cardEl.classList.add('removing');
-                        cardEl。addEventListener('animationend'， doDelete， { once: true });
+                        cardEl.addEventListener('animationend', doDelete, { once: true });
                     } else {
                         doDelete();
                     }
                 },
 
                 getImageBlockBgStyle(block) {
-                    const g = this。state.globalCardStyles;
-                    const s = block。设置;
+                    const g = this.state.globalCardStyles;
+                    const s = block.settings;
                     const useGlobalStyle = s.useGlobalStyle !== false;
 
                     let finalOpacity, bgStyle;
                     if (useGlobalStyle) {
-                        finalOpacity = g。opacity;
-                         if (g。bgMode === 'gradient') {
-                            bgStyle = `linear-gradient(${g.bgGradientAngle}deg, ${this.hexToRgba(g.bgGradientStart, finalOpacity)}， ${this。hexToRgba(g.bgGradientEnd, finalOpacity)})`;
+                        finalOpacity = g.opacity;
+                         if (g.bgMode === 'gradient') {
+                            bgStyle = `linear-gradient(${g.bgGradientAngle}deg, ${this.hexToRgba(g.bgGradientStart, finalOpacity)}, ${this.hexToRgba(g.bgGradientEnd, finalOpacity)})`;
                         } else {
                             bgStyle = this.hexToRgba(g.bgColor, finalOpacity);
                         }
@@ -1482,7 +1482,7 @@
                 loadFromLocal() { 
                     const json = localStorage.getItem('blokkoState'); 
                     if (!json) {
-                        this.showToast('欢迎使用 Blokko！已为您加载默认模板。'， 'info');
+                        this.showToast('欢迎使用 Blokko！已为您加载默认模板。', 'info');
                         return;
                     };
                     try { 
@@ -1775,139 +1775,139 @@
                     this.handleImageUpload(event, 'cardBg', { blockId, cardId });
                 },
                 
-                async handleImageGalleryUpload(blockId， 文件){
+                async handleImageGalleryUpload(blockId, files){
                      const block = this.findBlock(blockId); 
                         if (!block || !files.length) return; 
                         this.showLoading(`正在上传 ${files.length} 张图片...`);
                         try {
                             this.pushHistory(); 
-                            const newImages = await Promise。all(Array.from(files).map(f => this.readFileAsDataURL(f).then(this.compressImage)));
-                            block。images。push(...newImages.map(url => ({ url, title: '', description: '' })));
-                            this。debouncedSaveToLocal();
-                            this。renderEditorBlockById(blockId); 
+                            const newImages = await Promise.all(Array.from(files).map(f => this.readFileAsDataURL(f).then(this.compressImage)));
+                            block.images.push(...newImages.map(url => ({ url, title: '', description: '' })));
+                            this.debouncedSaveToLocal();
+                            this.renderEditorBlockById(blockId); 
                             this.renderPreviewBlockById(blockId); 
                         } catch (err) {
-                            this.showErrorModal('图片上传失败'， err.message);
+                            this.showErrorModal('图片上传失败', err.message);
                         } finally {
-                            this。hideLoading();
+                            this.hideLoading();
                         }
                 },
                 
-                deleteImage(blockId， index) { 
-                    this。pushHistory(); 
+                deleteImage(blockId, index) { 
+                    this.pushHistory(); 
                     const block = this.findBlock(blockId); 
-                    block.images.splice(index， 1);
+                    block.images.splice(index, 1);
                     this.debouncedSaveToLocal();
                     this.renderEditorBlockById(blockId); 
-                    this。renderPreviewBlockById(blockId); 
-                }，
+                    this.renderPreviewBlockById(blockId); 
+                },
                 
-                cropImage(blockId， index){
-                    const url = this。findBlock(blockId)?.images[index]?.url; 
-                    if (url) this.showCropper(url， { type: 'imageBlock', blockId, index }); 
-                }，
+                cropImage(blockId, index){
+                    const url = this.findBlock(blockId)?.images[index]?.url; 
+                    if (url) this.showCropper(url, { type: 'imageBlock', blockId, index }); 
+                },
                 
-                showCropper(imageSrc， target){
-                     this。currentCropTarget = target; 
-                        this。elements。cropperModal.classList.add('visible'); 
-                        this。elements。cropperImage。src = imageSrc; 
-                        if (this。cropper) this.cropper.destroy(); 
-                        this。cropper = new Cropper(this。elements。cropperImage， { aspectRatio: NaN, viewMode: 1， background: false }); 
-                }，
+                showCropper(imageSrc, target){
+                     this.currentCropTarget = target; 
+                        this.elements.cropperModal.classList.add('visible'); 
+                        this.elements.cropperImage.src = imageSrc; 
+                        if (this.cropper) this.cropper.destroy(); 
+                        this.cropper = new Cropper(this.elements.cropperImage, { aspectRatio: NaN, viewMode: 1, background: false }); 
+                },
                 
                 hideCropper(){
-                     this。elements。cropperModal。classList。remove('visible'); 
-                        if (this。cropper) { 
-                            this。cropper。destroy(); 
+                     this.elements.cropperModal.classList.remove('visible'); 
+                        if (this.cropper) { 
+                            this.cropper.destroy(); 
                             this.cropper = null; 
                         } 
-                }，
+                },
                 
                 async saveCrop(){
-                     if (!this。cropper || !this。currentCropTarget) return;
-                        this。showLoading('正在压缩裁剪后的图片...');
+                     if (!this.cropper || !this.currentCropTarget) return;
+                        this.showLoading('正在压缩裁剪后的图片...');
                         try {
                             const dataUrl = this.cropper.getCroppedCanvas()?.toDataURL();
                             if (!dataUrl) {
-                                this.showErrorModal('裁剪失败'， '无法获取裁剪后的图片数据。');
+                                this.showErrorModal('裁剪失败', '无法获取裁剪后的图片数据。');
                                 return;
                             }
 
-                            const { 输入， blockId, index, cardId } = this.currentCropTarget;
+                            const { type, blockId, index, cardId } = this.currentCropTarget;
                             let maxWidth = 1024; // Default for image blocks
-                            if (输入 === 'pageBg') maxWidth = 1920;
-                            if (输入 === 'avatar' || 输入 === 'cardBg') maxWidth = 400;
+                            if (type === 'pageBg') maxWidth = 1920;
+                            if (type === 'avatar' || type === 'cardBg') maxWidth = 400;
                             
-                            const finalDataUrl = await this。compressImage(dataUrl， 0.85， maxWidth);
+                            const finalDataUrl = await this.compressImage(dataUrl, 0.85, maxWidth);
 
-                            this。pushHistory();
-                            if (输入 === 'avatar') {
+                            this.pushHistory();
+                            if (type === 'avatar') {
                                 this.updateState('personalInfo.avatarDataUrl', finalDataUrl, false);
-                            } else if (输入 === 'pageBg') {
-                                this。updateState('pageStyles.pageBgImageDataUrl'， finalDataUrl, false);
-                            } else if (输入 === 'imageBlock') {
-                                this。updateImageData(blockId， index， 'url', finalDataUrl, false);
-                            } else if (输入 === 'cardBg') {
-                                this。updateCard(blockId， cardId, 'bgImageDataUrl', finalDataUrl， false);
+                            } else if (type === 'pageBg') {
+                                this.updateState('pageStyles.pageBgImageDataUrl', finalDataUrl, false);
+                            } else if (type === 'imageBlock') {
+                                this.updateImageData(blockId, index, 'url', finalDataUrl, false);
+                            } else if (type === 'cardBg') {
+                                this.updateCard(blockId, cardId, 'bgImageDataUrl', finalDataUrl, false);
                             }
-                            this。hideCropper();
+                            this.hideCropper();
                         } catch (err) {
-                            console。error('Save crop failed:'， err);
-                            this.showErrorModal('保存裁剪失败'， '处理图片时发生错误。');
+                            console.error('Save crop failed:', err);
+                            this.showErrorModal('保存裁剪失败', '处理图片时发生错误。');
                         } finally {
-                            this。hideLoading();
+                            this.hideLoading();
                         }
-                }，
+                },
                 
                 updateCropAspectRatio(){
                      if(this.cropper) this.cropper.setAspectRatio(parseFloat(document.querySelector('input[name="crop-ratio"]:checked').value)); 
-                }，
+                },
                 
                 async loadLocalFonts(){
                      if (!window.queryLocalFonts) {
-                            this.showErrorModal('功能不支持'， '您的浏览器不支持访问本地字体。请尝试使用“上传字体”功能。');
+                            this.showErrorModal('功能不支持', '您的浏览器不支持访问本地字体。请尝试使用“上传字体”功能。');
                             return;
                         }
                         try {
-                            this。showLoading('正在加载本地字体...');
-                            const fonts = await window。queryLocalFonts();
+                            this.showLoading('正在加载本地字体...');
+                            const fonts = await window.queryLocalFonts();
                             this.localFonts = fonts.map(font => ({ family: font.family, fullName: font.fullName, type: 'local' }));
                             this.populateFontList();
-                            this。showToast(`加载了 ${this。localFonts.length} 个本地字体`, 'success');
+                            this.showToast(`加载了 ${this.localFonts.length} 个本地字体`, 'success');
                         } catch (err) {
                             console.error('无法访问本地字体:', err);
-                            this.showErrorModal('加载本地字体失败'， '这是一个实验性的浏览器功能，可能因安全设置或浏览器版本而不稳定。如果持续失败，建议使用“上传字体”功能。');
+                            this.showErrorModal('加载本地字体失败', '这是一个实验性的浏览器功能，可能因安全设置或浏览器版本而不稳定。如果持续失败，建议使用“上传字体”功能。');
                         } finally {
-                            this。hideLoading();
+                            this.hideLoading();
                         }
                 },
                 
                 async handleFontUpload(event){
-                     const file = event.target。文件[0];
+                     const file = event.target.files[0];
                         if (!file) return;
-                        this。showLoading('正在上传并加载字体...');
+                        this.showLoading('正在上传并加载字体...');
                         try {
                             const fontData = await this.readFileAsArrayBuffer(file);
-                            const fontName = file.name.替换(/\.[^/.]+$/, "");
+                            const fontName = file.name.replace(/\.[^/.]+$/, "");
                             if (this.uploadedFonts.some(f => f.family === fontName) || this.localFonts.some(f => f.family === fontName)) {
                                 this.showErrorModal('字体已存在', `字体 "${fontName}" 已存在!`);
                                 return;
                             }
                             const fontFace = new FontFace(fontName, fontData.slice(0));
                             await fontFace.load();
-                            document.fonts。add(fontFace);
+                            document.fonts.add(fontFace);
                             
                             const fontDataBase64 = await this.arrayBufferToBase64(fontData);
                             this.uploadedFonts.push({ family: fontName, fullName: `${fontName} (上传)`, data: fontDataBase64, type: 'uploaded' });
-                            this。populateFontList();
-                            this。updateState('globalCardStyles.fontFamily'， fontName, true);
-                            this。showToast(`字体 "${fontName}" 上传成功`， 'success');
+                            this.populateFontList();
+                            this.updateState('globalCardStyles.fontFamily', fontName, true);
+                            this.showToast(`字体 "${fontName}" 上传成功`, 'success');
                         } catch (error) {
                             console.error('字体上传失败:', error);
                             this.showErrorModal('字体上传失败', '字体文件无效或加载失败。');
                         } finally {
-                            event。target。value = '';
-                            this。hideLoading();
+                            event.target.value = '';
+                            this.hideLoading();
                         }
                 },
                 
@@ -2012,27 +2012,27 @@
                         this.debouncedSaveToLocal();
                         this.renderAll(); 
                         this.syncAllControls();
-                        this.showToast('预设已应用'， 'success');
-                }，
+                        this.showToast('预设已应用', 'success');
+                },
                 
-                readFileAsDataURL(file){return new Promise((resolve， reject) => {
+                readFileAsDataURL(file){return new Promise((resolve, reject) => {
                         const reader = new FileReader();
                         reader.onload = () => resolve(reader.result);
                         reader.onerror = reject;
                         reader.readAsDataURL(file);
-                    })}，
+                    })},
                 
-                readFileAsArrayBuffer(file){return new Promise((resolve， reject) => {
+                readFileAsArrayBuffer(file){return new Promise((resolve, reject) => {
                         const reader = new FileReader();
                         reader.onload = () => resolve(reader.result);
                         reader.onerror = reject;
-                        reader。readAsArrayBuffer(file);
-                    })}，
+                        reader.readAsArrayBuffer(file);
+                    })},
                 
-                compressImage(dataUrl， quality = 0.8, maxWidth = 1024){return new Promise(resolve => {
+                compressImage(dataUrl, quality = 0.8, maxWidth = 1024){return new Promise(resolve => {
                         const img = new Image();
                         img.onload = () => {
-                            let { width， height } = img;
+                            let { width, height } = img;
                             if (width > maxWidth) {
                                 height = (maxWidth / width) * height;
                                 width = maxWidth;
@@ -2040,58 +2040,58 @@
                             const canvas = document.createElement('canvas');
                             canvas.width = width;
                             canvas.height = height;
-                            const ctx = canvas。getContext('2d');
-                            ctx。drawImage(img， 0， 0， width， height);
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0, width, height);
                             resolve(canvas.toDataURL('image/jpeg', quality));
                         };
                         img.src = dataUrl;
-                    })}，
+                    })},
                 
                 toggleTheme(){
                     const isDark = document.documentElement.classList.toggle('dark-mode'); 
-                    localStorage。setItem('blokkoTheme'， isDark ? 'dark' : 'light'); 
-                    this。elements。themeLabel。textContent = isDark ? '暗黑模式' : '明亮模式'; 
-                }，
+                    localStorage.setItem('blokkoTheme', isDark ? 'dark' : 'light'); 
+                    this.elements.themeLabel.textContent = isDark ? '暗黑模式' : '明亮模式'; 
+                },
                 
                 loadPreferences(){
-                    if (localStorage。getItem('blokkoTheme') === 'dark') { 
-                        this。elements。themeLabel。textContent = '暗黑模式'; 
+                    if (localStorage.getItem('blokkoTheme') === 'dark') { 
+                        this.elements.themeLabel.textContent = '暗黑模式'; 
                     } 
-                }，
+                },
                 
                 saveToLocal(){
                      try { 
-                            const stateToSave = this。deepClone(this。state);
-                            stateToSave。uploadedFonts = this。uploadedFonts;
-                            localStorage。setItem('blokkoState'， JSON.stringify(stateToSave)); 
+                            const stateToSave = this.deepClone(this.state);
+                            stateToSave.uploadedFonts = this.uploadedFonts;
+                            localStorage.setItem('blokkoState', JSON.stringify(stateToSave)); 
                         } catch (e) {
-                            console。error("Save to localStorage failed:"， e);
-                            if (e。name === 'QuotaExceededError') {
-                                this。showErrorModal('自动保存失败'， '浏览器存储空间已满！您添加的图片或字体文件过大。请立即“导出配置”来备份您的工作，然后尝试移除一些图片或字体以恢复自动保存功能。');
+                            console.error("Save to localStorage failed:", e);
+                            if (e.name === 'QuotaExceededError') {
+                                this.showErrorModal('自动保存失败', '浏览器存储空间已满！您添加的图片或字体文件过大。请立即“导出配置”来备份您的工作，然后尝试移除一些图片或字体以恢复自动保存功能。');
                             }
                         } 
-                }，
+                },
                 
                 generateFilename(type){
-                    const nickname = (this.state.personalInfo.nickname || '').替换(/[^a-z0-9\u4e00-\u9fa5]/gi, '_').substring(0, 15) || 'Blokko';
+                    const nickname = (this.state.personalInfo.nickname || '').replace(/[^a-z0-9\u4e00-\u9fa5]/gi, '_').substring(0, 15) || 'Blokko';
                     const date = new Date();
-                    const dateString = `${date。getFullYear()}${(date。getMonth() + 1)。toString().padStart(2, '0')}${date.getDate().toString().padStart(2, '0')}`;
-                    const randomString = Math。random()。toString(36)。substring(2， 8);
-                    return `${nickname}-${dateString}-${输入}-${randomString}`;
-                }，
+                    const dateString = `${date.getFullYear()}${(date.getMonth() + 1).toString().padStart(2, '0')}${date.getDate().toString().padStart(2, '0')}`;
+                    const randomString = Math.random().toString(36).substring(2, 8);
+                    return `${nickname}-${dateString}-${type}-${randomString}`;
+                },
                 
                 exportConfig(isTemplate = false){
-                     let stateToSave = this.deepClone(this。state);
+                     let stateToSave = this.deepClone(this.state);
                         
                         if (isTemplate) {
                             stateToSave.personalInfo.nickname = "你的昵称";
-                            stateToSave。personalInfo.subtitle = "这是副标题";
+                            stateToSave.personalInfo.subtitle = "这是副标题";
                             stateToSave.personalInfo.bio = "这是简介";
-                            stateToSave.personalInfo.标签 = this.getDefaultState()。personalInfo。标签;
-                            stateToSave。personalInfo。avatarDataUrl = this。getDefaultState().personalInfo.avatarDataUrl;
+                            stateToSave.personalInfo.tags = this.getDefaultState().personalInfo.tags;
+                            stateToSave.personalInfo.avatarDataUrl = this.getDefaultState().personalInfo.avatarDataUrl;
                             stateToSave.pageStyles.pageBgImageDataUrl = null;
 
-                            stateToSave.blocks。forEach(block => {
+                            stateToSave.blocks.forEach(block => {
                                 if (block.type === 'text') {
                                     block.title = "文本区块";
                                     block.cards.forEach(card => {
@@ -2146,37 +2146,37 @@
                                 
                                 if (importedState.uploadedFonts) {
                                     this.uploadedFonts = importedState.uploadedFonts;
-                                    const fontLoadPromises = this.uploadedFonts。map(font => {
+                                    const fontLoadPromises = this.uploadedFonts.map(font => {
                                         if (font.data) {
                                             try {
-                                               const fontFace = new FontFace(font。family， this.base64ToArrayBuffer(font。data));
-                                               return fontFace.load()。键，然后(f => document。fonts.add(f));
+                                               const fontFace = new FontFace(font.family, this.base64ToArrayBuffer(font.data));
+                                               return fontFace.load().then(f => document.fonts.add(f));
                                             } catch (fontError) {
-                                                console.error(`Failed to load font ${font。family} from config:`， fontError);
+                                                console.error(`Failed to load font ${font.family} from config:`, fontError);
                                                 return Promise.resolve();
                                             }
                                         }
-                                        return Promise。resolve();
+                                        return Promise.resolve();
                                     });
-                                    await Promise.全部(fontLoadPromises);
+                                    await Promise.all(fontLoadPromises);
                                 }
 
-                                this.history = [this。deepClone(this。state)];
+                                this.history = [this.deepClone(this.state)];
                                 this.historyIndex = 0;
-                                this。renderAll(true); 
+                                this.renderAll(true); 
                                 this.syncAllControls(); 
                                 this.populateFontList();
                                 this.initAllSortables();
                                 this.updateExportSizePreview();
-                                this.showToast('配置导入成功'， 'success');
+                                this.showToast('配置导入成功', 'success');
                             } catch(err) { 
                                 this.showErrorModal('导入失败', '配置文件格式不正确或已损坏。请确保您导入的是由本工具生成的 .json 文件。');
                                 console.error(err);
                             } finally {
-                                this。hideLoading();
+                                this.hideLoading();
                             }
                         }; 
-                        reader。readAsText(file); 
+                        reader.readAsText(file); 
                         e.target.value = ''; 
                 },
                 
@@ -2189,34 +2189,34 @@
                     const pageOverlay = clone.querySelector('#preview-overlay');
                     if (pageOverlay) {
                         const pageOverlayComputed = getComputedStyle(pageOverlay);
-                        if (parseFloat(pageOverlayComputed。opacity) > 0 && pageOverlayComputed.backgroundColor !== 'rgba(0, 0, 0, 0)') {
+                        if (parseFloat(pageOverlayComputed.opacity) > 0 && pageOverlayComputed.backgroundColor !== 'rgba(0, 0, 0, 0)') {
                             const overlayColor = pageOverlayComputed.backgroundColor;
                             const currentBg = getComputedStyle(pageWrapper).backgroundImage;
                             pageWrapper.style.backgroundImage = `linear-gradient(${overlayColor}, ${overlayColor}), ${currentBg}`;
                         }
-                        pageOverlay。style。display = 'none';
+                        pageOverlay.style.display = 'none';
                     }
 
                     clone.querySelectorAll('.preview-card-inner').forEach(cardInner => {
                         const computed = getComputedStyle(cardInner);
-                        const beforeComputed = getComputedStyle(cardInner， '::before');
-                        const afterComputed = getComputedStyle(cardInner， '::after');
+                        const beforeComputed = getComputedStyle(cardInner, '::before');
+                        const afterComputed = getComputedStyle(cardInner, '::after');
                         
                         const backgroundStyle = beforeComputed.getPropertyValue('background');
                         const overlayColor = afterComputed.getPropertyValue('background-color');
                         const overlayOpacity = parseFloat(afterComputed.getPropertyValue('opacity'));
 
                         if (overlayOpacity > 0 && overlayColor !== 'rgba(0, 0, 0, 0)') {
-                            cardInner.style。background = `linear-gradient(${overlayColor}, ${overlayColor}), ${backgroundStyle}`;
+                            cardInner.style.background = `linear-gradient(${overlayColor}, ${overlayColor}), ${backgroundStyle}`;
                         } else {
-                            cardInner.style。background = backgroundStyle;
+                            cardInner.style.background = backgroundStyle;
                         }
                         cardInner.style.border = computed.border;
-                        cardInner.style.boxShadow = computed。boxShadow;
+                        cardInner.style.boxShadow = computed.boxShadow;
                     });
 
                     style.innerHTML += `
-                        #${clone。id} .preview-card-inner::before, 
+                        #${clone.id} .preview-card-inner::before, 
                         #${clone.id} .preview-card-inner::after {
                             content: none !important;
                             background: none !important;
@@ -2232,36 +2232,36 @@
                         const originalElement = this.elements.previewWrapper;
                         let clone = null;
                         
-                        const wasDrawerOpen = this.elements。editorPanel。classList.contains('is-open');
+                        const wasDrawerOpen = this.elements.editorPanel.classList.contains('is-open');
                         if (wasDrawerOpen) {
-                            this。toggleEditorDrawer(false);
+                            this.toggleEditorDrawer(false);
                             await this.sleep(100);
                         }
                         
                         try {
                             clone = originalElement.cloneNode(true);
-                            clone.id = `export-clone-${Date。当前()}`;
+                            clone.id = `export-clone-${Date.now()}`;
                             
                             const style = document.createElement('style');
                             style.innerHTML = `
-                                #${clone。id}, #${clone.id} * { transition: none !important; animation: none !important; }
-                                #${clone。id} .preview-card:hover .preview-card-inner { transform: none !important; box-shadow: var(--active-card-shadow, none) !important; }
+                                #${clone.id}, #${clone.id} * { transition: none !important; animation: none !important; }
+                                #${clone.id} .preview-card:hover .preview-card-inner { transform: none !important; box-shadow: var(--active-card-shadow, none) !important; }
                             `;
                             clone.appendChild(style);
 
-                            clone.style。position = 'absolute';
-                            clone。style.left = '-9999px';
-                            clone。style.top = '0px';
+                            clone.style.position = 'absolute';
+                            clone.style.left = '-9999px';
+                            clone.style.top = '0px';
                             clone.style.width = `${originalElement.offsetWidth}px`;
 
-                            document。body。appendChild(clone);
+                            document.body.appendChild(clone);
                             await this.sleep(100);
 
                             this.showLoading('正在处理样式 (烘焙)...');
                             await this.bakeOverlaysForExport(clone);
                             await this.sleep(100);
 
-                            this。showLoading('正在渲染图片...');
+                            this.showLoading('正在渲染图片...');
                             const canvas = await html2canvas(clone, {
                                 scale: scale,
                                 useCORS: true,
@@ -2271,10 +2271,10 @@
 
                             const dataUrl = canvas.toDataURL('image/png');
                             const filename = this.generateFilename('Image') + '.png';
-                            this。showDownloadModal(dataUrl, filename, '图片已生成');
+                            this.showDownloadModal(dataUrl, filename, '图片已生成');
 
                         } catch (err) {
-                            console.error("PNG export failed:"， err);
+                            console.error("PNG export failed:", err);
                             this.showErrorModal('导出失败', `生成图片时发生错误: ${err.message}.`);
                         } finally {
                             if (clone && clone.parentNode) {
@@ -2290,9 +2290,9 @@
                 updateExportSizePreview(){
                      const el = this.elements.previewWrapper;
                         if (!el) return;
-                        const width = el。clientWidth;
+                        const width = el.clientWidth;
                         const height = el.clientHeight;
-                        const scale = this。elements.hdExportToggle.checked ? 3 : 2;
+                        const scale = this.elements.hdExportToggle.checked ? 3 : 2;
                         this.elements.exportSizePreview.textContent = `导出尺寸: ${width*scale}x${height*scale}px`;
                 },
                 
@@ -2304,10 +2304,10 @@
                             reader.onerror = e => reject(e);
                             reader.readAsDataURL(blob);
                         });
-                }，
+                },
                 
                 base64ToArrayBuffer(base64){
-                    const binaryString = atob(base64。split(',')[1]);
+                    const binaryString = atob(base64.split(',')[1]);
                         const len = binaryString.length;
                         const bytes = new Uint8Array(len);
                         for (let i = 0; i < len; i++) {
@@ -2316,17 +2316,17 @@
                         return bytes.buffer;
                 },
                 
-                showDownloadModal(url， filename, title){
-                    this。elements.downloadModalTitle.textContent = title; 
+                showDownloadModal(url, filename, title){
+                    this.elements.downloadModalTitle.textContent = title; 
                         const content = this.elements.downloadModalContent; 
-                        content。innerHTML = `<a href="${url}" download="${filename}">点击下载: ${filename}</a>`; 
-                        if (url。startsWith('data:image')) content。insertAdjacentHTML('afterbegin', `<img src="${url}">`); 
-                        this。elements.downloadModal。classList.add('visible'); 
-                }，
+                        content.innerHTML = `<a href="${url}" download="${filename}">点击下载: ${filename}</a>`; 
+                        if (url.startsWith('data:image')) content.insertAdjacentHTML('afterbegin', `<img src="${url}">`); 
+                        this.elements.downloadModal.classList.add('visible'); 
+                },
                 
                 hideDownloadModal(){ this.elements.downloadModal.classList.remove('visible'); },
                 
-                showErrorModal(title， message){
+                showErrorModal(title, message){
                     const existingModal = document.querySelector('.error-modal');
                         if (existingModal) existingModal.remove();
                         const modal = document.createElement('div');
@@ -2337,7 +2337,7 @@
                 
                 showLoading(text = '正在处理...'){
                     this.elements.loadingText.textContent = text;
-                        this。elements.loadingOverlay.classList.add('visible');
+                        this.elements.loadingOverlay.classList.add('visible');
                 },
                 
                 hideLoading(){
@@ -2548,57 +2548,57 @@
                      }
                 },
                 
-                showIconPicker(type， id, cardId = null){
-                     this。currentIconTarget = { 输入， id， cardId };
-                     this。elements。iconPickerModal。classList。add('visible');
-                     this。elements。iconSearch。focus();
-                }，
+                showIconPicker(type, id, cardId = null){
+                     this.currentIconTarget = { type, id, cardId };
+                     this.elements.iconPickerModal.classList.add('visible');
+                     this.elements.iconSearch.focus();
+                },
                 
                 hideIconPicker(){
-                     this。elements。iconPickerModal。classList。remove('visible');
-                     this。currentIconTarget = null;
-                     this。elements。iconSearch。value = '';
-                     this。elements。iconGrid。innerHTML = '';
-                }，
+                     this.elements.iconPickerModal.classList.remove('visible');
+                     this.currentIconTarget = null;
+                     this.elements.iconSearch.value = '';
+                     this.elements.iconGrid.innerHTML = '';
+                },
                 
                 selectIcon(iconClass){
-                    if (this。currentIconTarget) {
-                        const { 输入， id， cardId } = this。currentIconTarget;
-                        if (输入 === 'card') {
-                            this。updateCard(id， cardId, 'icon'， iconClass， true);
-                        } else if (输入 === 'tag') {
-                            this。updateTag(id， 'icon'， iconClass， true);
+                    if (this.currentIconTarget) {
+                        const { type, id, cardId } = this.currentIconTarget;
+                        if (type === 'card') {
+                            this.updateCard(id, cardId, 'icon', iconClass, true);
+                        } else if (type === 'tag') {
+                            this.updateTag(id, 'icon', iconClass, true);
                         }
                     }
-                    this。hideIconPicker();
-                }，
+                    this.hideIconPicker();
+                },
                 
-                hexToRgba(hex， alpha=1){
+                hexToRgba(hex, alpha=1){
                     if(!hex || parseFloat(alpha) === 0) return 'transparent';
-                    if (hex。startsWith('rgba')) {
-                        return hex。替换(/, ?\d?\.?\d+\)$/， `, ${alpha})`);
+                    if (hex.startsWith('rgba')) {
+                        return hex.replace(/, ?\d?\.?\d+\)$/, `, ${alpha})`);
                     }
-                    const match = hex。match(/\w\w/g);
+                    const match = hex.match(/\w\w/g);
                     if (!match) return `rgba(0,0,0,${alpha})`;
-                    const [r， g, b] = match。map(x => parseInt(x， 16)); 
-                    return `rgba(${r}，${g}，${b}，${alpha})`;
-                }，
+                    const [r, g, b] = match.map(x => parseInt(x, 16)); 
+                    return `rgba(${r},${g},${b},${alpha})`;
+                },
                 
-                debounce(func， wait){
+                debounce(func, wait){
                      let timeout; 
-                     return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => func。apply(this， args)， wait); }; 
-                }，
+                     return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => func.apply(this, args), wait); }; 
+                },
                 
-                generateId(p){ return `${p}-${Date。now()}-${Math。random()。toString(36)。substr(2, 9)}` }，
+                generateId(p){ return `${p}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}` },
                 
-                deepClone(obj){ return JSON。parse(JSON。stringify(obj)) }，
+                deepClone(obj){ return JSON.parse(JSON.stringify(obj)) },
                 
-                escapeHTML(str){ return (str || '')。replace(/[&<>"']/g， m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m]) },
+                escapeHTML(str){ return (str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m]) },
                 
-                sleep(ms){ return new Promise(resolve => setTimeout(resolve， ms)) }，
+                sleep(ms){ return new Promise(resolve => setTimeout(resolve, ms)) },
             };
 
-            App。init();
+            App.init();
         });
     </script>
 </body>
