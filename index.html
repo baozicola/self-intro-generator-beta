@@ -939,6 +939,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         helpModal: q('#help-modal'),
                         helpModalCloseBtn: q('#help-modal-close-btn'),
                         tutorialCloseBtn: q('#tutorial-close-btn'),
+                        newbieTipBar: q('#newbie-tip-bar'),
+                        newbieTipCloseBtn: q('#newbie-tip-close-btn'),
                         iconPickerModal: q('#icon-picker-modal'),
                         iconGrid: q('#icon-grid'),
                         iconSearch: q('#icon-search'),
@@ -958,8 +960,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         pageTextureControls: q('#page-texture-controls'),
                         currentTextureName: q('#current-texture-name'),
                         clearTextureBtn: q('#clear-texture-btn'),
-                        newbieTipBar: q('#newbie-tip-bar'),
-                        newbieTipCloseBtn: q('#newbie-tip-close-btn'),
                     };
                 },
 
@@ -1472,7 +1472,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     
                     let bgLayers = [];
                     let bgSizes = [];
-                    let bgPositions = [];
+                    let bgPositions = []; // <--- 修复点：在这里加上这行代码
                     let bgColor = 'transparent';
 
                     if (styles.pageBgPattern) {
@@ -2622,7 +2622,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     pageWrapper.style.backgroundColor = pageBgColor;
                     pageWrapper.style.backgroundImage = pageBgLayers.join(', ');
                     pageWrapper.style.backgroundSize = pageBgSizes.join(', ');
-                    pageWrapper.style.backgroundPosition = bgPositions.join(', ');
+                    pageWrapper.style.backgroundPosition = pageBgPositions.join(', ');
                     
                     clone.querySelectorAll('.preview-card-inner').forEach(cardInner => {
                         const computed = getComputedStyle(cardInner);
