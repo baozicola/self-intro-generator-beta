@@ -75,10 +75,10 @@
         .theme-switch-wrapper { display: flex; align-items: center; gap: 10px; }
         .theme-switch-wrapper span { font-size: 0.9rem; color: var(--text-secondary); }
         .app-container { display: flex; height: 100vh; padding-top: var(--header-height); }
-        .editor-panel { width: 520px; min-width: 450px; max-width: 70vw; height: calc(100vh - var(--header-height)); overflow-y: auto; overflow-x: hidden; background: var(--bg-editor); border-right: 1px solid var(--border-color); padding: 25px; transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease; flex-shrink: 0; }
+        .editor-panel { width: 520px; min-width: 450px; max-width: 70vw; height: calc(100vh - var(--header-height)); overflow-y: auto; background: var(--bg-editor); border-right: 1px solid var(--border-color); padding: 25px; transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease; flex-shrink: 0; }
         .resizer { width: 5px; height: calc(100vh - var(--header-height)); background: var(--border-color); cursor: col-resize; z-index: 50; flex-shrink: 0;}
         .resizer:hover { background: var(--color-primary); }
-        .preview-panel { flex-grow: 1; height: calc(100vh - var(--header-height)); overflow-y: auto; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; background: var(--bg-preview-pane); transition: background-color var(--transition-speed) ease; }
+        .preview-panel { flex-grow: 1; height: calc(100vh - var(--header-height)); overflow-y: auto; display: flex; justify-content: center; padding: 40px 20px; background: var(--bg-preview-pane); transition: background-color var(--transition-speed) ease; }
         body.export-mode .preview-panel { justify-content: flex-start; }
         .preview-wrapper { width: 100%; max-width: 600px; min-height: fit-content; border-radius: 20px; box-shadow: 0 4px 16px var(--shadow-medium); padding: 20px; padding-bottom: 40px; transition: all var(--transition-speed) ease; position: relative; overflow: hidden; font-family: var(--active-card-font-family); font-size: var(--active-card-font-size); }
         .preview-wrapper::before { content: none; } /* FIX: Layering - remove pseudo element for background image */
@@ -262,32 +262,6 @@
         #help-thanks details { margin-top: 10px; }
         #help-thanks summary { cursor: pointer; font-weight: 600; color: var(--text-action); }
         #help-thanks pre { white-space: pre-wrap; word-wrap: break-word; background: var(--bg-input); padding: 10px; border-radius: 6px; font-size: 0.8rem; max-height: 200px; overflow-y: auto; border: 1px solid var(--border-color); }
-        .newbie-tip-bar {
-            display: none;
-            width: 100%;
-            max-width: 600px;
-            background-color: var(--bg-card);
-            color: var(--text-primary);
-            padding: 10px 15px;
-            margin-bottom: 15px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-medium);
-            text-align: center;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            border: 1px solid var(--border-color);
-        }
-        .newbie-tip-bar .close-btn {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0 5px;
-        }
         @keyframes toast-in { to { opacity: 1; transform: translateX(0); } }
         @keyframes toast-out { to { opacity: 0; transform: translateX(100%); } }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -306,6 +280,7 @@
                 height: calc(100vh - var(--header-height)); z-index: 200;
                 transform: translateX(-100%); transition: transform 0.3s ease-in-out;
                 box-shadow: 4px 0 15px rgba(0,0,0,0.1); border-right: 1px solid var(--border-color);
+                overflow-x: hidden; /* v1.4.0 fix horizontal scroll */
             }
             .editor-panel.is-open { transform: translateX(0); }
             .preview-panel { width: 100%; height: calc(100vh - var(--header-height)); padding: 20px 10px; }
@@ -316,6 +291,18 @@
             }
             .preview-cards-triple { grid-template-columns: 1fr; }
             .masonry-active.preview-cards-triple .preview-card, .masonry-active.preview-cards-triple figure { width: 100%; }
+            /* v1.4.0 mobile UI fixes */
+            .color-control-row, .gradient-controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .gradient-controls {
+                grid-template-columns: 1fr;
+            }
+            .color-control-group {
+                width: 100%;
+                min-width: 0;
+            }
         }
     </style>
 </head>
@@ -377,38 +364,40 @@
             </fieldset>
 
             <fieldset class="editor-section collapsed" id="page-styles-section">
-                <legend>页面背景样式</legend>
+                <legend>页面与头部样式</legend>
                 <div class="section-content">
-                    <div class="tabs"><button class="tab-btn" data-tab="page-bg-solid">纯色/图片</button><button class="tab-btn active" data-tab="page-bg-gradient">渐变</button></div>
-                    <div id="page-bg-solid" class="tab-content"><div class="form-group"><label>页面背景颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageBgSolidColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageBgSolidColor"></div></div><div class="form-group"><label>背景图 (可选):</label><div class="input-group simple"><input type="file" id="page-bg-upload" accept="image/*" style="width:100%"><button id="clear-page-bg-btn" class="btn btn-default btn-small">清除</button></div></div>
-                    <div id="page-image-controls" style="display:none;"><div class="form-group"><label>图片遮罩颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageOverlayColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageOverlayColor"></div></div><div class="form-group"><label>图片遮罩不透明度:</label><input type="range" data-state-key="pageStyles.pageOverlayOpacity" min="0" max="1" step="0.05"></div></div></div>
-                    <div id="page-bg-gradient" class="tab-content active"><div class="gradient-controls"><div class="form-group"><label>起始颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageBgGradientStart"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageBgGradientStart"></div></div><div class="form-group"><label>结束颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageBgGradientEnd"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageBgGradientEnd"></div></div><div class="gradient-angle-control form-group"><label>角度 (<span class="angle-value">135</span>°):</label><input type="range" data-state-key="pageStyles.pageBgGradientAngle" min="0" max="360" step="1"></div></div></div>
-                    
-                    <div class="form-group" style="margin-top: 10px;">
-                        <button id="show-texture-picker-btn" class="btn btn-default">🎨 添加纹理</button>
-                    </div>
-                    <div id="page-texture-controls" class="inset-controls" style="display:none;">
-                        <div class="form-group">
-                            <label>当前纹理: <span id="current-texture-name">无</span></label>
-                             <button id="clear-texture-btn" class="btn btn-default btn-small">清除纹理</button>
+                    <div class="tab-group-wrapper">
+                        <h4>页面背景</h4>
+                        <div class="tabs"><button class="tab-btn" data-tab="page-bg-solid">纯色/图片</button><button class="tab-btn active" data-tab="page-bg-gradient">渐变</button></div>
+                        <div id="page-bg-solid" class="tab-content"><div class="form-group"><label>页面背景颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageBgSolidColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageBgSolidColor"></div></div><div class="form-group"><label>背景图 (可选):</label><div class="input-group simple"><input type="file" id="page-bg-upload" accept="image/*" style="width:100%"><button id="clear-page-bg-btn" class="btn btn-default btn-small">清除</button></div></div>
+                        <div id="page-image-controls" style="display:none;"><div class="form-group"><label>图片遮罩颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageOverlayColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageOverlayColor"></div></div><div class="form-group"><label>图片遮罩不透明度:</label><input type="range" data-state-key="pageStyles.pageOverlayOpacity" min="0" max="1" step="0.05"></div></div></div>
+                        <div id="page-bg-gradient" class="tab-content active"><div class="gradient-controls"><div class="form-group"><label>起始颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageBgGradientStart"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageBgGradientStart"></div></div><div class="form-group"><label>结束颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageBgGradientEnd"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageBgGradientEnd"></div></div><div class="gradient-angle-control form-group"><label>角度 (<span class="angle-value">135</span>°):</label><input type="range" data-state-key="pageStyles.pageBgGradientAngle" min="0" max="360" step="1"></div></div></div>
+                        
+                        <div class="form-group" style="margin-top: 10px;">
+                            <button id="show-texture-picker-btn" class="btn btn-default">🎨 添加纹理</button>
                         </div>
-                        <div class="color-control-row">
-                             <div class="color-control-group"><label>纹理颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageBgPatternColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageBgPatternColor"></div></div>
-                             <div class="color-control-group"><label>纹理不透明度:</label><input type="range" data-state-key="pageStyles.pageBgPatternOpacity" min="0" max="1" step="0.05"></div>
+                        <div id="page-texture-controls" class="inset-controls" style="display:none;">
+                            <div class="form-group">
+                                <label>当前纹理: <span id="current-texture-name">无</span></label>
+                                 <button id="clear-texture-btn" class="btn btn-default btn-small">清除纹理</button>
+                            </div>
+                            <div class="color-control-row">
+                                 <div class="color-control-group"><label>纹理颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.pageBgPatternColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.pageBgPatternColor"></div></div>
+                                 <div class="color-control-group"><label>纹理不透明度:</label><input type="range" data-state-key="pageStyles.pageBgPatternOpacity" min="0" max="1" step="0.05"></div>
+                            </div>
+                            <div class="form-group"><label>纹理密度:</label><input type="range" data-state-key="pageStyles.pageBgPatternDensity" min="10" max="100" step="2"></div>
                         </div>
-                        <div class="form-group"><label>纹理密度:</label><input type="range" data-state-key="pageStyles.pageBgPatternDensity" min="10" max="100" step="2"></div>
                     </div>
-                </div>
-            </fieldset>
 
-            <fieldset class="editor-section collapsed" id="header-styles-section">
-                <legend>头部样式</legend>
-                <div class="section-content">
-                    <div class="tabs"><button class="tab-btn" data-tab="header-bg-solid">纯色</button><button class="tab-btn active" data-tab="header-bg-gradient">渐变</button></div>
-                    <div id="header-bg-solid" class="tab-content"><div class="form-group"><label>头部背景颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.headerBgColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.headerBgColor"></div></div></div>
-                    <div id="header-bg-gradient" class="tab-content active"><div class="gradient-controls"><div class="form-group"><label>起始颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.headerBgGradientStart"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.headerBgGradientStart"></div></div><div class="form-group"><label>结束颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.headerBgGradientEnd"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.headerBgGradientEnd"></div></div><div class="gradient-angle-control form-group"><label>角度 (<span class="angle-value">135</span>°):</label><input type="range" data-state-key="pageStyles.headerBgGradientAngle" min="0" max="360" step="1"></div></div></div>
-                    <div class="form-group"><label>头部文字颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.headerTextColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.headerTextColor"></div></div>
-                    <div class="form-group"><label>头部不透明度:</label><input type="range" data-state-key="pageStyles.headerOpacity" min="0" max="1" step="0.05"></div>
+                    <hr class="separator">
+                    <div class="tab-group-wrapper">
+                        <h4>头部背景</h4>
+                        <div class="tabs"><button class="tab-btn" data-tab="header-bg-solid">纯色</button><button class="tab-btn active" data-tab="header-bg-gradient">渐变</button></div>
+                        <div id="header-bg-solid" class="tab-content"><div class="form-group"><label>头部背景颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.headerBgColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.headerBgColor"></div></div></div>
+                        <div id="header-bg-gradient" class="tab-content active"><div class="gradient-controls"><div class="form-group"><label>起始颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.headerBgGradientStart"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.headerBgGradientStart"></div></div><div class="form-group"><label>结束颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.headerBgGradientEnd"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.headerBgGradientEnd"></div></div><div class="gradient-angle-control form-group"><label>角度 (<span class="angle-value">135</span>°):</label><input type="range" data-state-key="pageStyles.headerBgGradientAngle" min="0" max="360" step="1"></div></div></div>
+                        <div class="form-group"><label>头部文字颜色:</label><div class="input-group"><input type="color" data-state-key="pageStyles.headerTextColor"><input type="text" class="color-hex-input" data-color-sync-key="pageStyles.headerTextColor"></div></div>
+                        <div class="form-group"><label>头部不透明度:</label><input type="range" data-state-key="pageStyles.headerOpacity" min="0" max="1" step="0.05"></div>
+                    </div>
                 </div>
             </fieldset>
             
@@ -450,9 +439,9 @@
                     <div class="color-control-row"><div class="color-control-group"><label>文字描边(px):</label><input type="range" data-state-key="globalCardStyles.textStrokeWidth" min="0" max="5" step="0.5"></div><div class="color-control-group"><label>描边颜色:</label><div class="input-group"><input type="color" data-state-key="globalCardStyles.textStrokeColor"><input type="text" class="color-hex-input" data-color-sync-key="globalCardStyles.textStrokeColor"></div></div></div>
                 </div>
             </fieldset>
-
+            
             <fieldset class="editor-section">
-                <legend>操作与管理</legend>
+                <legend>操作</legend>
                 <div class="section-content">
                     <div class="form-group" style="display: flex; gap: 10px;"> <button id="undo-btn" class="btn btn-default" disabled>撤回</button> <button id="redo-btn" class="btn btn-default" disabled>重做</button> </div>
                     <div class="form-group" style="display: flex; gap: 10px;"> <button id="import-btn" class="btn btn-secondary">导入配置</button> <button id="export-btn" class="btn btn-secondary">导出配置</button> <button id="export-template-btn" class="btn btn-secondary">存为模板</button></div>
@@ -486,23 +475,7 @@
         </aside>
 
         <div class="resizer" id="resizer"></div>
-        <main class="preview-panel" id="preview-panel">
-            <div class="newbie-tip-bar" id="newbie-tip-bar" style="display: none;">
-                <span>💡 <b>小提示：</b>预览区的所有文字，<b>双击一下</b>就能直接修改哦！</span>
-                <button class="close-btn" id="newbie-tip-close-btn">&times;</button>
-            </div>
-            <div class="preview-wrapper" id="preview-wrapper">
-                <div class="preview-overlay" id="preview-overlay"></div>
-                <header class="preview-header" id="preview-header">
-                    <img id="preview-avatar" src="" alt="Avatar">
-                    <h1 id="preview-nickname" data-state-key="personalInfo.nickname"></h1>
-                    <h2 id="preview-subtitle" data-state-key="personalInfo.subtitle"></h2>
-                    <p id="preview-bio" data-state-key="personalInfo.bio"></p>
-                    <div class="tags-container" id="preview-tags-container"></div>
-                </header>
-                <main class="preview-blocks-container" id="preview-blocks-container"></main>
-            </div>
-        </main>
+        <main class="preview-panel" id="preview-panel"> <div class="preview-wrapper" id="preview-wrapper"> <div class="preview-overlay" id="preview-overlay"></div> <header class="preview-header" id="preview-header"> <img id="preview-avatar" src="" alt="Avatar"> <h1 id="preview-nickname" data-state-key="personalInfo.nickname"></h1><h2 id="preview-subtitle" data-state-key="personalInfo.subtitle"></h2><p id="preview-bio" data-state-key="personalInfo.bio"></p> <div class="tags-container" id="preview-tags-container"></div> </header> <main class="preview-blocks-container" id="preview-blocks-container"></main> </div> </main>
     </div>
 
     <div class="modal-overlay" id="cropper-modal"><div class="modal-container"><h3 id="cropper-title">裁剪图片</h3><div class="crop-ratios radio-group"><label><input type="radio" name="crop-ratio" value="NaN" checked> 自由</label><label><input type="radio" name="crop-ratio" value="1"> 1:1</label><label><input type="radio" name="crop-ratio" value="1.3333"> 4:3</label><label><input type="radio" name="crop-ratio" value="1.7777"> 16:9</label></div><div class="cropper-img-container"><img id="cropper-image" src=""></div><div class="modal-actions"><button id="cropper-cancel-btn" class="btn btn-default">取消</button><button id="cropper-save-btn" class="btn btn-primary">确认</button></div></div></div>
@@ -520,30 +493,25 @@
             <div id="help-tutorial" class="tab-content">
                 <h4>欢迎来到 Blokko！✨</h4>
                 <p>别担心，这个小教程将带你快速上手，整个过程只需一分钟！当然如果你有类似工具使用经验，或是已经熟练使用的话，划到最底下看完重要提示，就放心关掉吧!</p>
-                <hr class="separator">
-                <h5>写在正式开始前</h5>
-                <p>Blokko 是一个免费的工具，建议使用<strong>安卓端的Via浏览器，并打开全屏模式或电脑模式，PC端的Edge浏览器和Chrome浏览器</strong>来使用体验最佳。</p>
-                <hr class="separator">
-                <h5>第一步：核心技巧 - 双击编辑！</h5>
-                <p>Blokko 最便捷的操作就是“双击”。<strong>预览区域里你看到的所有文字</strong>（比如昵称、简介、卡片标题和内容），直接<strong>双击</strong>它们，就可以立刻开始编辑，非常方便！（需要把最上方按钮切换成“编辑中”状态哦）</p>
-                <hr class="separator">
-                <h5>第二步：调整你的个人信息</h5>
-                <p>在左侧的编辑面板，最上方的 <strong>“个人信息”</strong> 区域，你可以上传头像、修改昵称、添加标签，打造属于你的独特头部样式。</p>
-                <hr class="separator">
-                <h5>第三步：添加和管理内容</h5>
-                <p>在 <strong>“内容区块”</strong> 部分，你可以点击下方的“➕”按钮来添加不同类型的展示模块，比如文本卡片、图片墙等。每个区块和卡片都可以通过拖拽 ☰ 图标来排序。</p>
-                <hr class="separator">
-                <h5>第四步：美化与导出</h5>
-                <p>当你对内容满意后，可以探索 <strong>“页面样式”</strong> 和 <strong>“全局卡片样式”</strong>，调整颜色、字体和背景，让你的作品更具个性。全部完成后，点击最下方的 <strong>“导出为图片”</strong> 按钮，就可以保存你的杰作啦！</p>
-                <hr class="separator">
-                <div style="background: var(--bg-input); border-left: 4px solid var(--color-danger); padding: 10px 15px; border-radius: 6px;">
-                    <h5 style="color: var(--color-danger); margin-top:0;">⚠️ 关于版权的重要提示</h5>
-                    <p>Blokko 是一个完全免费的本地创作工具。当您使用“上传字体”、“上传图片/图标”功能时，您需要对这些素材负责。<strong>请确保您上传和使用的任何文件都已获得了原版权方的合法授权，或使用无版权可商用素材。</strong></p>
-                    <p style="margin-bottom:0;">因使用未授权素材而产生的任何版权问题，将由您自行承担。换言之，自己上传素材，一定要注意版权信息哦！</p>
-                </div>
-                <div class="modal-actions" style="justify-content: center; margin-top: 20px;">
-                    <button id="tutorial-close-btn" class="btn btn-primary">我学会了，开始创作！</button>
-                </div>
+                
+                <h4>写在正式开始前</h4>
+                <p>Blokko 是一个免费的工具，建议使用安卓端的Via浏览器，并打开全屏模式或电脑模式，PC端的Edge浏览器和Chrome浏览器来使用体验最佳。</p>
+                
+                <h4>第一步：核心技巧 - 双击编辑！</h4>
+                <p>Blokko 最便捷的操作就是“双击”。预览区域里你看到的所有文字（比如昵称、简介、卡片标题和内容），直接双击它们，就可以立刻开始编辑，非常方便！（需要把最上方按钮切换成“编辑中”状态哦）</p>
+                
+                <h4>第二步：调整你的个人信息</h4>
+                <p>在左侧的编辑面板，最上方的 “个人信息” 区域，你可以上传头像、修改昵称、添加标签，打造属于你的独特头部样式。</p>
+                
+                <h4>第三步：添加和管理内容</h4>
+                <p>在 “内容区块” 部分，你可以点击下方的“➕”按钮来添加不同类型的展示模块，比如文本卡片、图片墙等。每个区块和卡片都可以通过拖拽 ☰ 图标来排序。</p>
+                
+                <h4>第四步：美化与导出</h4>
+                <p>当你对内容满意后，可以探索 “页面样式” 和 “全局卡片样式”，调整颜色、字体和背景，让你的作品更具个性。全部完成后，点击 “操作” 区域的 “导出为图片” 按钮，就可以保存你的杰作啦！</p>
+                
+                <h4>⚠️ 关于版权的重要提示</h4>
+                <p><strong>Blokko 是一个完全免费的本地创作工具。当您使用“上传字体”、“上传图片/图标”功能时，您需要对这些素材负责。请确保您上传和使用的任何文件都已获得了原版权方的合法授权，或使用无版权可商用素材。</strong></p>
+                <p><strong>因使用未授权素材而产生的任何版权问题，将由您自行承担。换言之，自己上传素材，一定要注意版权信息哦！</strong></p>
             </div>
             <div id="help-instructions" class="tab-content active">
                 <h4>欢迎使用 Blokko！</h4>
@@ -561,13 +529,17 @@
             <div id="help-changelog" class="tab-content">
                 <h4>v1.4.0 (当前版本)</h4>
                 <ul>
-                    <li><b>【体验】</b> 新增了新手教程！首次打开工具时会自动弹出，引导新用户快速上手。后续可在“帮助”中查看。</li>
-                    <li><b>【体验】</b> 优化了编辑区的布局，将“个人信息”和“内容区块”等常用项前提，将“导入/导出”等操作项后置，更符合使用直觉。</li>
-                    <li><b>【体验】</b> 强化了“双击编辑”的引导，为新用户增加了醒目的提示条。</li>
-                    <li><b>【优化】</b> 优化了PC端的点击定位功能，现在点击预览区的任意卡片，左侧编辑区将精确滚动到该卡片的设置位置。</li>
-                    <li><b>【修复】</b> 修复了手机端编辑面板可能会出现水平滚动条的问题。</li>
-                    <li><b>【修复】</b> 修复了编辑区内可折叠项目之间垂直间距过大的问题，使布局更紧凑。</li>
-                    <li><b>【修复】</b> 重构了“页面与头部样式”区块，将其拆分为两个独立的折叠项，解决了点击内部标签页导致整个区块折叠的交互问题。</li>
+                    <li><b>【新增】</b> <b>新手教程:</b> 首次访问的用户将自动弹出新手教程，帮助快速上手。后续可通过“帮助”按钮查看。</li>
+                    <li><b>【优化】</b> <b>编辑区布局:</b> 调整了左侧编辑区的模块顺序，将不常用的“操作”部分移至底部，更符合新用户的使用习惯。</li>
+                    <li><b>【优化】</b> <b>预览定位增强:</b> 在电脑端，点击预览区的任意卡片，左侧编辑区现在会精确滚动到该卡片的具体设置项，而不仅仅是其所属的区块。</li>
+                    <li><b>【优化】</b> <b>移动端UI:</b>
+                        <ul>
+                            <li>修复了在手机上编辑面板可能会出现水平滚动条的问题，优化了窄屏下的布局。</li>
+                            <li>减小了各编辑模块之间的垂直间距，使布局更紧凑。</li>
+                            <li>修复了“页面样式”设置中，“页面背景”和“头部背景”的Tab控件会互相干扰的BUG。</li>
+                        </ul>
+                    </li>
+                    <li><b>【修复】</b> <b>图片导出:</b> 修复了在特定情况下导出图片时可能因背景定位问题导致报错的BUG。</li>
                 </ul>
                 <hr class="separator">
                 <h4>v1.3.2</h4>
@@ -688,7 +660,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 <h4>关于 Blokko</h4>
                 <p>Blokko是一个方便大家快速制作扩列/自荐/置顶图的小工具！</p>
                 <p><strong>作者：</strong> 四十七</p>
-                <p>如果你在使用中遇到BUG，可以通过链接私信我！如果觉得好用，也可以点击链接去置顶留下评论或转发，或者分享这个软件的原博（也就是点开链接就能看到的置顶）这会给我很大鼓励！</p>
+                <p>如果你在使用中遇到BUG，可以通过链接私信我！</p>
                 <p><a href="https://weibo.com/u/5095783616" target="_blank" rel="noopener noreferrer"><strong>我的微博主页</strong></a></p>
             </div>
             <div class="modal-actions" style="justify-content: center; margin-top: 20px;">
@@ -804,9 +776,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     this.loadIcons(); 
                     
                     document.getElementById('personal-info-section').classList.remove('collapsed');
+                    
+                    // v1.4.0: Show tutorial on first visit
+                    const hasVisited = localStorage.getItem('blokkoFirstVisit');
+                    if (!hasVisited) {
+                        const helpModal = this.elements.helpModal;
+                        helpModal.classList.add('visible');
 
-                    // --- NEW v1.4.0: First visit checks ---
-                    this.handleFirstVisit();
+                        // Switch to tutorial tab
+                        helpModal.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                        helpModal.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                        const tutorialTabBtn = helpModal.querySelector('[data-tab="help-tutorial"]');
+                        const tutorialContent = helpModal.querySelector('#help-tutorial');
+                        if (tutorialTabBtn && tutorialContent) {
+                            tutorialTabBtn.classList.add('active');
+                            tutorialContent.classList.add('active');
+                        }
+
+                        localStorage.setItem('blokkoFirstVisit', 'true');
+                    }
                 },
 
                 getDefaultState() {
@@ -938,9 +927,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         showHelpBtn: q('#show-help-btn'),
                         helpModal: q('#help-modal'),
                         helpModalCloseBtn: q('#help-modal-close-btn'),
-                        tutorialCloseBtn: q('#tutorial-close-btn'),
-                        newbieTipBar: q('#newbie-tip-bar'),
-                        newbieTipCloseBtn: q('#newbie-tip-close-btn'),
                         iconPickerModal: q('#icon-picker-modal'),
                         iconGrid: q('#icon-grid'),
                         iconSearch: q('#icon-search'),
@@ -1010,11 +996,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
                     document.querySelectorAll('.tabs .tab-btn').forEach(button => {
                         button.addEventListener('click', (e) => {
-                            const parent = e.target.closest('.modal-container, .section-content, .editor-card-content');
+                            // v1.4.0 fix: Use a more specific parent to avoid interfering with other tab groups
+                            const parent = e.target.closest('.modal-container, .tab-group-wrapper, .editor-card-content, #global-card-styles-section > .section-content');
                             if (!parent) return;
                             parent.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
                             button.classList.add('active');
-                            parent.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                            parent.querySelectorAll(':scope > .tab-content').forEach(content => content.classList.remove('active'));
                             const targetTab = parent.querySelector(`#${button.dataset.tab}`);
                             if (targetTab) targetTab.classList.add('active');
                             
@@ -1025,7 +1012,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
                             if (sectionEl.id === 'global-card-styles-section') {
                                 this.updateState('globalCardStyles.bgMode', newMode, true);
-                            } else if (sectionEl.id === 'page-styles-section' || sectionEl.id === 'header-styles-section') {
+                            } else if (sectionEl.id === 'page-styles-section') {
                                 if (button.dataset.tab.startsWith('page-bg')) {
                                     this.updateState('pageStyles.pageBgMode', newMode, true);
                                 } else if (button.dataset.tab.startsWith('header-bg')) {
@@ -1044,15 +1031,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     this.elements.showHelpBtn.addEventListener('click', () => this.elements.helpModal.classList.add('visible'));
                     this.elements.helpModalCloseBtn.addEventListener('click', () => this.elements.helpModal.classList.remove('visible'));
                     
-                    this.elements.tutorialCloseBtn.addEventListener('click', () => {
-                        this.elements.helpModal.classList.remove('visible');
-                        localStorage.setItem('blokkoTutorialSeen', 'true');
-                    });
-                    this.elements.newbieTipCloseBtn.addEventListener('click', () => {
-                        this.elements.newbieTipBar.style.display = 'none';
-                        localStorage.setItem('blokkoFirstVisit', 'false');
-                    });
-
                     this.elements.iconPickerCloseBtn.addEventListener('click', () => this.hideIconPicker());
                     this.elements.removeIconBtn.addEventListener('click', () => this.selectIcon(null));
                     this.elements.iconSearch.addEventListener('input', this.debounce((e) => this.renderIconGrid(e.target.value), 300));
@@ -1285,15 +1263,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 bindPreviewEvents(){
                      this.elements.previewPanel.addEventListener('click', e => {
                         if (this.isEditingText) return;
-                        
                         const blockWrapper = e.target.closest('.preview-block-wrapper');
-                        const cardWrapper = e.target.closest('.preview-card, figure');
-                        
-                        const blockId = blockWrapper ? blockWrapper.dataset.blockId : null;
-                        const cardId = cardWrapper ? cardWrapper.dataset.cardId : null;
-
-                        if (blockId) {
-                            this.focusOnEditorElement(blockId, cardId);
+                        if (blockWrapper && blockWrapper.dataset.blockId) {
+                            // v1.4.0: Get cardId for precise focusing
+                            const cardWrapper = e.target.closest('.preview-card, figure');
+                            const cardId = cardWrapper ? cardWrapper.dataset.cardId : null;
+                            this.focusOnEditorElement(blockWrapper.dataset.blockId, cardId);
                         }
                      });
 
@@ -1302,11 +1277,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         const target = e.target.closest('[data-state-key], [data-card-key], [data-tag-id]');
                         if (target && !this.isEditingText) {
                             const blockWrapper = target.closest('.preview-block-wrapper');
-                            const cardWrapper = target.closest('.preview-card, figure');
-                            const blockId = blockWrapper ? blockWrapper.dataset.blockId : null;
-                            const cardId = cardWrapper ? cardWrapper.dataset.cardId : null;
-                            if (blockId) {
-                                this.focusOnEditorElement(blockId, cardId);
+                            if (blockWrapper && blockWrapper.dataset.blockId) {
+                                const cardWrapper = target.closest('.preview-card, figure');
+                                const cardId = cardWrapper ? cardWrapper.dataset.cardId : null;
+                                this.focusOnEditorElement(blockWrapper.dataset.blockId, cardId);
                             }
 
                             this.isEditingText = true;
@@ -1472,7 +1446,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     
                     let bgLayers = [];
                     let bgSizes = [];
-                    let bgPositions = []; // <--- 修复点：在这里加上这行代码
+                    let bgPositions = [];
                     let bgColor = 'transparent';
 
                     if (styles.pageBgPattern) {
@@ -1865,10 +1839,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 loadFromLocal() { 
                     const json = localStorage.getItem('blokkoState'); 
                     if (!json) {
-                        // Don't show toast for first-time users, tutorial will handle it.
-                        if (localStorage.getItem('blokkoFirstVisit') !== null) {
-                            this.showToast('欢迎使用 Blokko！已为您加载默认模板。', 'info');
-                        }
+                        this.showToast('欢迎使用 Blokko！已为您加载默认模板。', 'info');
                         return;
                     };
                     try { 
@@ -1991,17 +1962,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     const gCardSection = document.getElementById('global-card-styles-section');
                     const gCardActiveTab = this.state.globalCardStyles.bgMode === 'gradient' ? 'card-bg-gradient' : 'card-bg-solid';
                     gCardSection.querySelectorAll('.tab-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.tab === gCardActiveTab));
-                    gCardSection.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === gCardActiveTab));
+                    gCardSection.querySelectorAll(':scope > .section-content > .tab-content').forEach(c => c.classList.toggle('active', c.id === gCardActiveTab));
 
                     const pageSection = document.getElementById('page-styles-section');
                     const pageActiveTab = this.state.pageStyles.pageBgMode === 'gradient' ? 'page-bg-gradient' : 'page-bg-solid';
+                    const headerActiveTab = this.state.pageStyles.headerBgMode === 'gradient' ? 'header-bg-gradient' : 'header-bg-solid';
+
                     pageSection.querySelectorAll('[data-tab^="page-bg-"]').forEach(btn => btn.classList.toggle('active', btn.dataset.tab === pageActiveTab));
                     pageSection.querySelectorAll('#page-bg-solid, #page-bg-gradient').forEach(c => c.classList.toggle('active', c.id === pageActiveTab));
-
-                    const headerSection = document.getElementById('header-styles-section');
-                    const headerActiveTab = this.state.pageStyles.headerBgMode === 'gradient' ? 'header-bg-gradient' : 'header-bg-solid';
-                    headerSection.querySelectorAll('[data-tab^="header-bg-"]').forEach(btn => btn.classList.toggle('active', btn.dataset.tab === headerActiveTab));
-                    headerSection.querySelectorAll('#header-bg-solid, #header-bg-gradient').forEach(c => c.classList.toggle('active', c.id === headerActiveTab));
+                    pageSection.querySelectorAll('[data-tab^="header-bg-"]').forEach(btn => btn.classList.toggle('active', btn.dataset.tab === headerActiveTab));
+                    pageSection.querySelectorAll('#header-bg-solid, #header-bg-gradient').forEach(c => c.classList.toggle('active', c.id === headerActiveTab));
                     
                     this.isRestoringState = false;
                 },
@@ -2588,6 +2558,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     const styles = this.state.pageStyles;
                     let pageBgLayers = [];
                     let pageBgSizes = [];
+                    // v1.4.0 fix: define pageBgPositions
                     let pageBgPositions = [];
                     let pageBgColor = 'transparent';
 
@@ -2615,6 +2586,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     }
                     if (styles.pageBgMode === 'gradient') {
                         pageBgLayers.push(`linear-gradient(${styles.pageBgGradientAngle}deg, ${styles.pageBgGradientStart}, ${styles.pageBgGradientEnd})`);
+                        pageBgSizes.push('auto');
+                        pageBgPositions.push('initial');
                     } else {
                         pageBgColor = styles.pageBgSolidColor;
                     }
@@ -2910,8 +2883,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 resetToDefault() {
                     if (window.confirm('警告：此操作将清空您所有的内容和样式设置，并恢复到初始模板。此过程不可撤销，确定要继续吗？')) {
                         localStorage.removeItem('blokkoState');
-                        localStorage.removeItem('blokkoFirstVisit');
-                        localStorage.removeItem('blokkoTutorialSeen');
                         this.state = this.getDefaultState();
                         this.history = [this.deepClone(this.state)];
                         this.historyIndex = 0;
@@ -3100,6 +3071,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     this.elements.texturePickerModal.classList.remove('visible');
                 },
 
+                // v1.4.0: Enhanced focus function
                 focusOnEditorElement(blockId, cardId = null) {
                     if (window.innerWidth <= 768) return;
 
@@ -3111,16 +3083,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         mainSection.classList.remove('collapsed');
                     }
                     
-                    setTimeout(() => {
-                        let targetEl = editorBlockEl;
-
-                        if (cardId) {
-                            const cardEl = editorBlockEl.querySelector(`.editor-card[data-card-id="${cardId}"]`);
-                            if (cardEl) {
-                                targetEl = cardEl;
-                            }
+                    // Determine the final element to focus on
+                    let targetEl = editorBlockEl;
+                    if (cardId) {
+                        const cardEl = editorBlockEl.querySelector(`.editor-card[data-card-id="${cardId}"]`);
+                        if (cardEl) {
+                            targetEl = cardEl;
                         }
+                    }
 
+                    setTimeout(() => {
                         targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         targetEl.style.transition = 'outline 0.1s ease-in-out, box-shadow 0.2s ease-in-out';
                         targetEl.style.outline = '2px solid var(--color-primary)';
@@ -3130,29 +3102,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             targetEl.style.boxShadow = '';
                         }, 1500);
                     }, 150);
-                },
-
-                handleFirstVisit() {
-                    const tutorialSeen = localStorage.getItem('blokkoTutorialSeen');
-                    const firstVisit = localStorage.getItem('blokkoFirstVisit');
-                    
-                    if (!tutorialSeen) {
-                        this.showTutorial();
-                    } else if (firstVisit === null) {
-                        this.elements.newbieTipBar.style.display = 'flex';
-                        localStorage.setItem('blokkoFirstVisit', 'true');
-                    }
-                },
-
-                showTutorial() {
-                    const modal = this.elements.helpModal;
-                    modal.classList.add('visible');
-                    
-                    modal.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-                    modal.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                    
-                    modal.querySelector('[data-tab="help-tutorial"]').classList.add('active');
-                    modal.querySelector('#help-tutorial').classList.add('active');
                 },
 
                 hexToRgba(hex, alpha=1){
