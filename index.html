@@ -2588,7 +2588,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     const styles = this.state.pageStyles;
                     let pageBgLayers = [];
                     let pageBgSizes = [];
-                    let pageBgPositions = [];
+                    // 修复 1：在这里声明 pageBgPositions 数组
+                    let pageBgPositions = []; 
                     let pageBgColor = 'transparent';
 
                     if (styles.pageBgPattern) {
@@ -2615,6 +2616,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     }
                     if (styles.pageBgMode === 'gradient') {
                         pageBgLayers.push(`linear-gradient(${styles.pageBgGradientAngle}deg, ${styles.pageBgGradientStart}, ${styles.pageBgGradientEnd})`);
+                        // 额外修复：为渐变背景也添加 size 和 position
+                        pageBgSizes.push('cover');
+                        pageBgPositions.push('center');
                     } else {
                         pageBgColor = styles.pageBgSolidColor;
                     }
@@ -2622,7 +2626,32 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     pageWrapper.style.backgroundColor = pageBgColor;
                     pageWrapper.style.backgroundImage = pageBgLayers.join(', ');
                     pageWrapper.style.backgroundSize = pageBgSizes.join(', ');
-                    pageWrapper.style.backgroundPosition = bgPositions.join(', ');
+                    // 修复 2：修正这里的拼写错误
+                    pageWrapper.style.backgroundPosition = pageBgPositions.join(', ');
+                    
+                    clone.querySelectorAll('.preview-card-inner').forEach(cardInner => {
+                        const computed = getComputedStyle(cardInner);
+                        const beforeComputed = getComputedStyle(cardInner, '::before');
+                        const afterComputed = getComputedStyle(cardInner, '::after');
+                        
+                        let backgroundStyle = beforeComputed.getPropertyValue('background');
+                        const overlayOpacity = parseFloat(afterComputed.getPropertyValue('opacity'));
+                        const bgImage = beforeComputed.getPropertyValue('background-image');
+
+                        if (overlayOpacity > 0 && bgImage !== 'none') {
+                            const overlayColor = afterComputed.getPropertyValue('background-color');
+                             if(overlayColor !== 'rgba(0, 0, 0, 0)') {
+                                const overlayGradient = `linear-gradient(${overlayColor}, ${overlayColor})`;
+                                backgroundStyle = `${overlayGradient}, ${backgroundStyle}`;
+                            }
+                        }
+                        cardInner.style.background = backgroundStyle;
+                        cardInner.style.border = computed.border;
+                        cardInner.style.boxShadow = computed.boxShadow;
+                    });
+                    
+                    style.innerHTML += `#${clone.id} .preview-card-inner::before, #${clone.id} .preview-card-inner::after { content: none !important; background: none !important; display: none !important; }`;
+                },
                     
                     clone.querySelectorAll('.preview-card-inner').forEach(cardInner => {
                         const computed = getComputedStyle(cardInner);
