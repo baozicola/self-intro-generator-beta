@@ -73,12 +73,12 @@
         .app-header { width: 100%; height: var(--header-height); background: var(--bg-editor); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; position: fixed; top: 0; left: 0; z-index: 100; box-shadow: 0 2px 8px var(--shadow-light); transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease; }
         .header-actions-wrapper { display: flex; align-items: center; gap: 15px; }
         .app-header-title { font-size: 1.25rem; font-weight: 700; }
-        .theme-switch-wrapper { display: flex; align-items: center; gap: 10px; }
-        .theme-switch-wrapper span { font-size: 0.9rem; color: var(--text-secondary); }
+        。theme-switch-wrapper { display: flex; align-items: center; gap: 10px; }
+        。theme-switch-wrapper span { font-size: 0.9rem; color: var(--text-secondary); }
         .app-container { display: flex; height: 100vh; padding-top: var(--header-height); }
 
         /* v1.5.0: New Three-Pane Layout */
-        .layer-panel, .inspector-panel {
+        。layer-panel, .inspector-panel {
             background: var(--bg-editor);
             height: calc(100vh - var(--header-height));
             overflow-y: auto;
@@ -253,7 +253,7 @@
         .editor-card.sortable-chosen { box-shadow: 0 3px 8px var(--shadow-medium); transform: scale(1.01); }
         .card-drag-handle { position: absolute; top: 0; left: 0; bottom: 0; width: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--text-placeholder); cursor: grab; border-right: 1px solid var(--border-color); }
         .card-drag-handle:active { cursor: grabbing; }
-        .editor-card-header { display: flex; justify-content: flex-end; padding: 8px 10px; border-bottom: 1px solid var(--border-color); }
+        。editor-card-header { display: flex; justify-content: flex-end; padding: 8px 10px; border-bottom: 1px solid var(--border-color); }
         .card-delete-btn { width: auto; padding: 4px 8px; font-size: 0.8rem; }
         .editor-card-content { padding: 15px; }
         .card-bg-control { display: flex; align-items: center; gap: 10px; }
@@ -281,7 +281,7 @@
         .preview-cards-dual { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .preview-cards-triple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .masonry-active { display: block; position: relative; } /* Override grid */
-        .masonry-active.preview-cards-dual .preview-card, .masonry-active.preview-cards-dual figure { width: calc(50% - 7.5px); margin-bottom: 15px; }
+        。masonry-active.preview-cards-dual .preview-card, .masonry-active.preview-cards-dual figure { width: calc(50% - 7.5px); margin-bottom: 15px; }
         .masonry-active.preview-cards-triple .preview-card, .masonry-active.preview-cards-triple figure { width: calc(33.333% - 10px); margin-bottom: 15px; }
         .preview-card { box-sizing: border-box; width: 100%; view-transition-name: var(--card-transition-name); }
         .preview-card-inner { width: 100%; height: 100%; box-sizing: border-box; position: relative; overflow: hidden; color: var(--card-text-color, var(--g-card-text-color)); border-radius: var(--g-card-border-radius); box-shadow: var(--active-card-shadow, none); border: var(--active-card-border, none); font-weight: var(--card-font-weight, normal); text-shadow: var(--active-card-text-shadow, none); padding: 15px; word-wrap: break-word; transition: all var(--transition-short) ease, transform var(--transition-short) ease; -webkit-text-stroke: var(--g-card-text-stroke); line-height: var(--g-card-line-height); background-clip: padding-box; }
@@ -472,13 +472,13 @@
                 <p><strong>因使用未授权素材而产生的任何版权问题，将由您自行承担。换言之，自己上传素材，一定要注意版权信息哦！</strong></p>
                 
                 <h4>写在正式开始前</h4>
-                <p>Blokko 是一个免费的工具，设计之初是为了电脑端编辑使用的，建议使用PC端的Edge浏览器和Chrome浏览器来使用体验最佳，移动端也做了基础的适配，建议使用via浏览器。</p>
+                <p>Blokko 是一个免费的工具，设计之初是为了电脑端编辑使用的，建议使用PC端的Edge浏览器和Chrome浏览器来使用体验最佳，移动端也做了适配，竖屏下建议使用via浏览器,并且开启“全屏”功能。</p>
                 
                 <h4>第一步：核心技巧 - 双击编辑！</h4>
                 <p>Blokko 最便捷的操作就是“双击”。预览区域里你看到的所有文字（比如昵称、简介、卡片标题和内容），直接双击它们，就可以立刻开始编辑，非常方便！（需要把最上方按钮切换成“编辑中”状态哦）</p>
                 
                 <h4>第二步：调整你的个人信息</h4>
-                <p>在左侧的 “内容图层” 面板，点击 “👤 个人信息” 图层，右侧的 “样式检查器” 就会显示出所有相关设置，你可以在那里上传头像、修改昵称、添加标签等。</p>
+                <p>在左侧的 “内容图层” 面板，点击 “👤 个人信息” 图层，右侧的 “样式” 就会显示出所有相关设置，你可以在那里上传头像、修改昵称、添加标签等。</p>
                 
                 <h4>第三步：添加和管理内容</h4>
                 <p>在左下角的 “➕” 按钮可以添加不同类型的展示模块。在 “内容图层” 面板，你可以通过拖拽来排序所有区块。</p>
@@ -513,7 +513,7 @@
                         <ul>
                             <li><b>左侧 - 内容图层</b>: 清晰地展示所有内容区块的层级结构，专注于内容的增删、排序和重命名。</li>
                             <li><b>中间 - 实时预览</b>: 保持所见即所得的画布体验，现在点击其中元素可以直接激活右侧的样式设置。</li>
-                            <li><b>右侧 - 样式检查器</b>: 一个强大的上下文关联面板。默认显示全局样式；当您选中任何元素时，它会自动切换，只显示该元素的专属设置选项。</li>
+                            <li><b>右侧 - 样式</b>: 一个强大的上下文关联面板。默认显示全局样式；当您选中任何元素时，它会自动切换，只显示该元素的专属设置选项。</li>
                         </ul>
                     </li>
                     <li><b>【功能与体验优化】</b>
@@ -781,88 +781,88 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         personalInfo: { 
                             nickname: "你的昵称", nicknameColor: lightTheme.pNicknameColor,
                             subtitle: "这是副标题，双击可编辑", subtitleColor: lightTheme.pSubtitleColor,
-                            bio: "这是简介，双击可编辑", bioColor: lightTheme.pBioColor,
-                            avatarDataUrl: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cccccc'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E", 
+                            bio: "这是简介，双击可编辑"， bioColor: lightTheme.pBioColor，
+                            avatarDataUrl: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cccccc'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E"， 
                             avatarShape: '50%', avatarBorderSize: 4, avatarBorderColor: '#ffffff',
-                            tags: [
-                                { id: this.generateId('t'), icon: 'mdi:palette', text: '设计师' },
+                            标签: [
+                                { id: this.generateId('t')， icon: 'mdi:palette'， text: '设计师' }，
                                 { id: this.generateId('t'), icon: 'mdi:github', text: '代码爱好者' }
-                            ], 
-                            tagBgColor: lightTheme.pTagBgColor, tagTextColor: lightTheme.pTagTextColor
+                            ]， 
+                            tagBgColor: lightTheme.pTagBgColor， tagTextColor: lightTheme.pTagTextColor
                         },
                         pageStyles: {
                             pageBgMode: 'gradient',
                             pageBgSolidColor: lightTheme.pageBgSolidColor, pageBgImageDataUrl: null, 
-                            pageBgGradientStart: lightTheme.pageBgGradientStart, pageBgGradientEnd: lightTheme.pageBgGradientEnd,
-                            pageBgGradientAngle: 135,
+                            pageBgGradientStart: lightTheme.pageBgGradientStart， pageBgGradientEnd: lightTheme。pageBgGradientEnd，
+                            pageBgGradientAngle: 135，
                             pageOverlayColor: "#000000", pageOverlayOpacity: 0.3,
                             pageBgPattern: '', pageBgPatternColor: '#000000', pageBgPatternOpacity: 0.1, pageBgPatternDensity: 30,
                             headerBgMode: 'gradient',
                             headerBgColor: lightTheme.headerBgColor, headerTextColor: lightTheme.headerTextColor, headerOpacity: 1.0, 
-                            headerBgGradientStart: lightTheme.headerBgGradientStart, headerBgGradientEnd: lightTheme.headerBgGradientEnd,
-                            headerBgGradientAngle: 135,
-                        },
+                            headerBgGradientStart: lightTheme.headerBgGradientStart， headerBgGradientEnd: lightTheme.headerBgGradientEnd,
+                            headerBgGradientAngle: 135，
+                        }，
                         blocks: [
-                            { id: this.generateId('b'), type: 'text', title: "单排卡片区块", settings: { layout: 'single', masonryEnabled: false }, cards: [
+                            { id: this.generateId('b'), 输入: 'text', title: "单排卡片区块"， settings: { layout: 'single', masonryEnabled: false }, cards: [
                                 { id: this.generateId('c'), icon: '', title: "这是单排卡片", content: "双击这里进行编辑", opacity: 1.0, followGlobalOpacity: true }
                             ]},
                             { id: this.generateId('b'), type: 'text', title: "双排卡片区块", settings: { layout: 'dual', masonryEnabled: false }, cards: [
-                                { id: this.generateId('c'), icon: '', title: "这是双排卡片 1", content: "双击这里进行编辑", opacity: 1.0, followGlobalOpacity: true },
-                                { id: this.generateId('c'), icon: '', title: "这是双排卡片 2", content: "双击这里进行编辑", opacity: 1.0, followGlobalOpacity: true }
-                            ]},
-                            { id: this.generateId('b'), type: 'separator', title: "分割线", settings: { style: 'solid', color: '#dddddd', thickness: 1, margin: 20 }},
-                            { id: this.generateId('b'), type: 'image', title: "图片区块", settings: { layout: 'dual', masonryEnabled: false, textColor: '' }, cards: [] },
-                            { id: this.generateId('b'), type: 'spacer', title: "留白块", settings: { height: 20 }},
-                        ],
+                                { id: this.generateId('c')， icon: '', title: "这是双排卡片 1", content: "双击这里进行编辑", opacity: 1.0, followGlobalOpacity: true },
+                                { id: this.generateId('c')， icon: '', title: "这是双排卡片 2", content: "双击这里进行编辑", opacity: 1.0, followGlobalOpacity: true }
+                            ]}，
+                            { id: this.generateId('b'), 输入: 'separator', title: "分割线"， settings: { style: 'solid', color: '#dddddd', thickness: 1, margin: 20 }},
+                            { id: this.generateId('b')， 输入: 'image', title: "图片区块", settings: { layout: 'dual', masonryEnabled: false, textColor: '' }, cards: [] },
+                            { id: this。generateId('b')， 输入: 'spacer', title: "留白块", settings: { height: 20 }},
+                        ]，
                         globalCardStyles: { 
-                            bgMode: 'solid', 
-                            bgColor: lightTheme.gCardBgColor, textColor: lightTheme.gCardTextColor, opacity: 1.0,
+                            bgMode: 'solid'， 
+                            bgColor: lightTheme。gCardBgColor， textColor: lightTheme.gCardTextColor, opacity: 1.0,
                             bgGradientStart: lightTheme.gCardBgGradientStart, bgGradientEnd: lightTheme.gCardBgGradientEnd,
-                            bgGradientAngle: 135,
-                            shadowEnabled: true, radius: 12, textAlign: "left", lineHeight: "1.5", 
+                            bgGradientAngle: 135，
+                            shadowEnabled: true, radius: 12, textAlign: "left"， lineHeight: "1.5"， 
                             fontFamily: "", fontSize: "1rem",
                             textStrokeWidth: 0, textStrokeColor: "#000000",
                             borderWidth: 0, borderStyle: 'none', borderColor: '#cccccc',
                         }
                     };
-                },
+                }，
                 
                 getPresets() {
                     return {
                         light: {
                             pageBgSolidColor: "#f0f2f5", pageBgGradientStart: "#f0f2f5", pageBgGradientEnd: "#e6e9ed",
-                            headerBgColor: "#ffffff", headerBgGradientStart: "#ffffff", headerBgGradientEnd: "#f7f7f7",
-                            headerTextColor: "#1a1a1a",
+                            headerBgColor: "#ffffff", headerBgGradientStart: "#ffffff", headerBgGradientEnd: "#f7f7f7"，
+                            headerTextColor: "#1a1a1a"，
                             gCardBgColor: "#ffffff", gCardTextColor: "#1a1a1a", gCardOpacity: 1.0,
                             gCardBgGradientStart: "#ffffff", gCardBgGradientEnd: "#f5f5f5",
-                            pNicknameColor: "#1a1a1a", pSubtitleColor: "#555555", pBioColor: "#555555",
-                            pTagBgColor: "#eef1f5", pTagTextColor: "#3c3c43",
+                            pNicknameColor: "#1a1a1a", pSubtitleColor: "#555555"， pBioColor: "#555555"，
+                            pTagBgColor: "#eef1f5", pTagTextColor: "#3c3c43"，
                         },
                         dark: {
                             pageBgSolidColor: "#121417", pageBgGradientStart: "#121417", pageBgGradientEnd: "#1a1d21",
-                            headerBgColor: "#1f2229", headerBgGradientStart: "#1f2229", headerBgGradientEnd: "#252930",
+                            headerBgColor: "#1f2229", headerBgGradientStart: "#1f2229"， headerBgGradientEnd: "#252930",
                             headerTextColor: "#f0f2f5",
                             gCardBgColor: "#2c303a", gCardTextColor: "#f0f2f5", gCardOpacity: 0.95,
                             gCardBgGradientStart: "#2c303a", gCardBgGradientEnd: "#343946",
-                            pNicknameColor: "#f0f2f5", pSubtitleColor: "#a0aec0", pBioColor: "#a0aec0",
-                            pTagBgColor: "#3e4451", pTagTextColor: "#e2e8f0",
-                        },
+                            pNicknameColor: "#f0f2f5"， pSubtitleColor: "#a0aec0", pBioColor: "#a0aec0",
+                            pTagBgColor: "#3e4451"， pTagTextColor: "#e2e8f0",
+                        }，
                         mint: {
-                            pageBgSolidColor: "#ccfbf1", pageBgGradientStart: "#ccfbf1", pageBgGradientEnd: "#a7f3d0",
+                            pageBgSolidColor: "#ccfbf1", pageBgGradientStart: "#ccfbf1"， pageBgGradientEnd: "#a7f3d0",
                             headerBgColor: "#f0fdfa", headerBgGradientStart: "#f0fdfa", headerBgGradientEnd: "#e6fcf5",
                             headerTextColor: "#0f766e",
                             gCardBgColor: "#ffffff", gCardTextColor: "#134e4a", gCardOpacity: 1.0,
                             gCardBgGradientStart: "#ffffff", gCardBgGradientEnd: "#fafffd",
                             pNicknameColor: "#064e3b", pSubtitleColor: "#115e59", pBioColor: "#134e4a",
-                            pTagBgColor: "#a7f3d0", pTagTextColor: "#065f46",
-                        },
+                            pTagBgColor: "#a7f3d0"， pTagTextColor: "#065f46",
+                        }，
                         coffee: {
                             pageBgSolidColor: "#f3e8e2", pageBgGradientStart: "#f3e8e2", pageBgGradientEnd: "#e9d8cf",
                             headerBgColor: "#fdf8f6", headerBgGradientStart: "#fdf8f6", headerBgGradientEnd: "#faf3ef",
-                            headerTextColor: "#432818",
-                            gCardBgColor: "#ffffff", gCardTextColor: "#5e4534", gCardOpacity: 1.0,
-                            gCardBgGradientStart: "#ffffff", gCardBgGradientEnd: "#fffbf8",
-                            pNicknameColor: "#432818", pSubtitleColor: "#6f4e37", pBioColor: "#5e4534",
+                            headerTextColor: "#432818"，
+                            gCardBgColor: "#ffffff", gCardTextColor: "#5e4534"， gCardOpacity: 1.0,
+                            gCardBgGradientStart: "#ffffff", gCardBgGradientEnd: "#fffbf8"，
+                            pNicknameColor: "#432818"， pSubtitleColor: "#6f4e37"， pBioColor: "#5e4534",
                             pTagBgColor: "#e3d5ca", pTagTextColor: "#432818",
                         }
                     };
@@ -1083,25 +1083,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                            const blockEl = target.closest('.editor-block');
                            if (cardEl && blockEl) this.handleCardBgUpload(e, blockEl.dataset.blockId, cardEl.dataset.cardId);
                         }
-                        if (target.matches('.image-upload-input')) {
-                            const blockEl = target.closest('.editor-block');
+                        if (target。matches('.image-upload-input')) {
+                            const blockEl = target。closest('.editor-block');
                             if (blockEl) {
-                                this.handleImageGalleryUpload(blockEl.dataset.blockId, e.target.files);
-                                e.target.value = '';
+                                this。handleImageGalleryUpload(blockEl。dataset。blockId， e。target。files);
+                                e。target。value = '';
                             }
                         }
 
-                        if (target.matches('[data-setting-key="masonryEnabled"]') || target.matches('[name^="block-layout"]')) {
-                            this.renderInspector();
+                        if (target.matches('[data-setting-key="masonryEnabled"]') || target。matches('[name^="block-layout"]')) {
+                            this。renderInspector();
                         }
-                        if (target.matches('[data-card-key="followGlobalOpacity"]')) {
-                            this.renderInspector();
+                        if (target。matches('[data-card-key="followGlobalOpacity"]')) {
+                            this。renderInspector();
                         }
                     });
 
-                    panel.addEventListener('click', e => {
+                    panel。addEventListener('click'， e => {
                         const target = e.target;
-                        const actionButton = target.closest('button, .back-to-global-btn');
+                        const actionButton = target。closest('button, .back-to-global-btn');
                         if (!actionButton) return;
                         
                         // Handle simple button clicks
@@ -1109,23 +1109,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             '#undo-btn': () => this.undo(),
                             '#redo-btn': () => this.redo(),
                             '#import-btn': () => panel.querySelector('#config-file-input')?.click(),
-                            '#export-btn': () => this.exportConfig(false),
-                            '#export-template-btn': () => this.exportConfig(true),
+                            '#export-btn': () => this.exportConfig(false)，
+                            '#export-template-btn': () => this.exportConfig(true)，
                             '#export-png-btn': () => this.exportPNG(),
                             '#load-local-fonts-btn': () => this.loadLocalFonts(),
-                            '#upload-font-btn': () => panel.querySelector('#font-upload-input')?.click(),
+                            '#upload-font-btn': () => panel.querySelector('#font-upload-input')?.click()，
                             '#add-new-tag-btn': () => this.addNewTag(),
-                            '#show-texture-picker-btn': () => this.elements.texturePickerModal.classList.add('visible'),
+                            '#show-texture-picker-btn': () => this。elements。texturePickerModal。classList.add('visible')，
                             '#clear-texture-btn': () => this.selectTexture(null),
                             '.back-to-global-btn': () => this.setSelection({type: 'global'}),
                             '#reset-btn': () => this.resetToDefault(),
                             '#clear-page-bg-btn': () => {
-                                this.updateState('pageStyles.pageBgImageDataUrl', null, true);
-                                this.showToast('背景图已清除', 'info');
+                                this。updateState('pageStyles.pageBgImageDataUrl'， null, true);
+                                this。showToast('背景图已清除'， 'info');
                             }
                         };
-                        for(const selector in actions) {
-                            if (actionButton.matches(selector)) {
+                        for(const selector 在 actions) {
+                            if (actionButton。matches(selector)) {
                                 actions[selector]();
                                 return;
                             }
@@ -1134,11 +1134,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         // Handle buttons with data attributes
                         if (actionButton.dataset.preset) this.applyPreset(this.presets[actionButton.dataset.preset]);
 
-                        if (actionButton.dataset.resetKey) {
+                        if (actionButton。dataset。resetKey) {
                             let basePreset = this.presets.light;
-                            const keyMap = { nicknameColor: 'pNicknameColor', subtitleColor: 'pSubtitleColor', bioColor: 'pBioColor', tagBgColor: 'pTagBgColor', tagTextColor: 'pTagTextColor', avatarBorderColor: '#ffffff' };
-                            const [section, key] = actionButton.dataset.resetKey.split('.');
-                            let valueToReset = basePreset[keyMap[key]] || this.presets.light[keyMap[key]];
+                            const keyMap = { nicknameColor: 'pNicknameColor'， subtitleColor: 'pSubtitleColor'， bioColor: 'pBioColor'， tagBgColor: 'pTagBgColor'， tagTextColor: 'pTagTextColor'， avatarBorderColor: '#ffffff' };
+                            const [section, key] = actionButton。dataset。resetKey.split('.');
+                            let valueToReset = basePreset[keyMap[key]] || this。presets。light[keyMap[key]];
                             this.updateState(actionButton.dataset.resetKey, valueToReset, true);
                             this.showToast('颜色已重置', 'info');
                         }
@@ -1620,7 +1620,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     const layoutRadiosHTML = `
                         <div class="radio-group">
                             <label><input type="radio" data-setting-key="layout" name="block-layout-${block.id}" value="single" ${block.settings.layout === 'single' ? 'checked' : ''}> 单排</label>
-                            <label><input type="radio" data-setting-key="layout" name="block-layout-${block.id}" value="dual" ${block.settings.layout === 'dual' ? 'checked' : ''}> 双排</label>
+                            <label><input type="radio" data-setting-key="layout" name="block-layout-${block。id}" value="dual" ${block.settings.layout === 'dual' ? 'checked' : ''}> 双排</label>
                             <label><input type="radio" data-setting-key="layout" name="block-layout-${block.id}" value="triple" ${block.settings.layout === 'triple' ? 'checked' : ''}> 三排</label>
                         </div>`;
 
@@ -2311,9 +2311,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         const createOptgroup = (label, fonts) => {
                             if (fonts.length === 0) return '';
                             const options = fonts
-                                .sort((a, b) => a.fullName.localeCompare(b.fullName))
-                                .map(f => `<option value="${this.escapeHTML(f.family)}" ${f.missing?'disabled':''}>${this.escapeHTML(f.fullName)}</option>`)
-                                .join('');
+                                。sort((a, b) => a.fullName.localeCompare(b.fullName))
+                                。map(f => `<option value="${this.escapeHTML(f.family)}" ${f.missing?'disabled':''}>${this.escapeHTML(f.fullName)}</option>`)
+                                。join('');
                             return `<optgroup label="${label}">${options}</optgroup>`;
                         };
 
@@ -2466,7 +2466,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                         }
                                     });
                                     if(block.type === 'image') block.cards = [];
-                                }
+	}
                             });
                             this.showToast('模板已导出', 'success');
                         } else {
@@ -2499,7 +2499,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                 
                                 if (typeof importedState.personalInfo.tags === 'string') {
                                     importedState.personalInfo.tags = importedState.personalInfo.tags.split(/[,，、]/).map(t => t.trim()).filter(Boolean)
-                                        .map(text => ({ id: this.generateId('t'), icon: null, text }));
+                                        。map(text => ({ id: this.generateId('t'), icon: null, text }));
                                     this.showToast('旧版配置已导入并自动升级。', 'info');
                                 }
 
@@ -3307,3 +3307,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     </script>
 </body>
 </html>
+
