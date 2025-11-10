@@ -82,7 +82,7 @@
             height: calc(100vh - var(--header-height));
             overflow-y: auto;
             flex-shrink: 0;
-            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            transition: background-color var(--transition-speed) ease， border-color var(--transition-speed) ease;
         }
         。layer-panel {
             width: var(--layer-panel-width);
@@ -234,7 +234,7 @@
         。section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         。section-header h4 { margin: 0; }
 
-        .form-group { margin-bottom: 15px; }
+        。form-group { margin-bottom: 15px; }
         。form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text-label); margin-bottom: 8px; }
         。form-group input[type="text"], .form-group input[type="number"], .form-group input[type="file"], .form-group select, .form-group textarea { width: 100%; padding: 10px; font-size: 14px; background: var(--bg-input); border: 1px solid var(--border-input); border-radius: 6px; color: var(--text-primary); transition: all var(--transition-short) ease; max-width: 100%; overflow-wrap: break-word; }
         。form-group input[type="text"]:focus, .form-group input[type="number"]:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2); }
@@ -265,23 +265,23 @@
         #preview-nickname { margin: 12px 0 5px; font-size: 1.6rem; font-weight: 700; color: var(--text-primary); transition: color var(--transition-speed) ease; }
         #preview-subtitle { margin: 0 0 8px; font-size: 1rem; font-weight: 400; color: var(--text-primary); opacity: 0.7; transition: color var(--transition-speed) ease, margin var(--transition-speed) ease; }
         #preview-bio { margin: 0; font-size: 0.9rem; line-height: 1.4; color: var(--text-primary); opacity: 0.8; transition: color var(--transition-speed) ease; white-space: pre-wrap; }
-        #preview-subtitle:empty, #preview-bio:empty { display: none; }
-        .tags-container { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-        .tag-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; font-size: 0.8rem; font-weight: 600; border-radius: 16px; transition: all var(--transition-speed) ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .editor-block { background: var(--bg-editor); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px var(--shadow-light); transition: all var(--transition-speed) ease; opacity: 1; transform: scale(1); }
-        .sortable-ghost { background: var(--bg-image-upload-hover) !important; border: 2px dashed var(--color-primary); box-shadow: none !important; opacity: 0.8 !important; }
-        .editor-block.sortable-chosen { box-shadow: 0 4px 12px var(--shadow-medium); transform: scale(1.02); }
-        .editor-block-header { display: flex; align-items: center; padding: 0 10px; background: var(--bg-section); border-bottom: 1px solid var(--border-color); border-radius: 8px 8px 0 0; }
-        .block-drag-handle { font-size: 1.5rem; color: var(--text-placeholder); padding: 10px; cursor: grab; flex-shrink: 0; }
-        .block-drag-handle:active { cursor: grabbing; }
-        .editor-block-title-input { font-weight: 600; color: var(--text-primary); margin: 0; flex-grow: 1; padding: 10px; border: 1px solid transparent; background: transparent; font-size: 1em; min-width: 0; overflow-wrap: break-word; border-radius: 4px; }
-        .editor-block-title-input:hover { border-color: var(--border-input); }
-        .editor-block-title-input:focus { outline: 1px solid var(--color-primary); background: var(--bg-input); border-color: var(--color-primary); }
-        .block-actions { display: flex; align-items: center; gap: 5px; margin-left: auto; flex-shrink: 0; }
-        .up-down-btns { display: flex; gap: 2px; }
-        .up-down-btns button { font-size: 1rem; width: 28px; height: 28px; padding: 0; line-height: 28px; }
-        .block-settings { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-left: 10px; flex-shrink: 0; }
-        .block-settings label { font-size: 0.9rem; margin: 0; color: var(--text-secondary); cursor: pointer; }
+        #preview-subtitle:空的, #preview-bio:empty { display: none; }
+        。tags-container { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        。tag-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; font-size: 0.8rem; font-weight: 600; border-radius: 16px; transition: all var(--transition-speed) ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        。editor-block { background: var(--bg-editor); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px var(--shadow-light); transition: all var(--transition-speed) ease; opacity: 1; transform: scale(1); }
+        。sortable-ghost { background: var(--bg-image-upload-hover) !important; border: 2px dashed var(--color-primary); box-shadow: none !important; opacity: 0.8 !important; }
+        。editor-block。sortable-chosen { box-shadow: 0 4px 12px var(--shadow-medium); transform: scale(1.02); }
+        。editor-block-header { display: flex; align-items: center; padding: 0 10px; background: var(--bg-section); border-bottom: 1px solid var(--border-color); border-radius: 8px 8px 0 0; }
+        。block-drag-handle { font-size: 1.5rem; color: var(--text-placeholder); padding: 10px; cursor: grab; flex-shrink: 0; }
+        。block-drag-handle:active { cursor: grabbing; }
+        。editor-block-title-input { font-weight: 600; color: var(--text-primary); margin: 0; flex-grow: 1; padding: 10px; border: 1px solid transparent; background: transparent; font-size: 1em; min-width: 0; overflow-wrap: break-word; border-radius: 4px; }
+        。editor-block-title-input:hover { border-color: var(--border-input); }
+        。editor-block-title-input:focus { outline: 1px solid var(--color-primary); background: var(--bg-input); border-color: var(--color-primary); }
+        。block-actions { display: flex; align-items: center; gap: 5px; margin-left: auto; flex-shrink: 0; }
+        。up-down-btns { display: flex; gap: 2px; }
+        。up-down-btns button { font-size: 1rem; width: 28px; height: 28px; padding: 0; line-height: 28px; }
+        。block-settings { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-left: 10px; flex-shrink: 0; }
+        。block-settings label { font-size: 0.9rem; margin: 0; color: var(--text-secondary); cursor: pointer; }
         .block-delete-btn { width: auto; padding: 6px 10px; font-size: 0.9rem; flex-shrink: 0; }
         .editor-block-content { padding: 15px; overflow-x: hidden; }
         .card-editors-list .empty-placeholder, .image-card-editors-list .empty-placeholder { text-align: center; padding: 15px; color: var(--text-placeholder); font-size: 0.9rem; }
@@ -375,19 +375,19 @@
         #texture-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
         .icon-grid-item { display: flex; align-items: center; justify-content: center; height: 50px; font-size: 1.5rem; color: var(--text-primary); border-radius: 6px; cursor: pointer; transition: background-color var(--transition-short); position: relative; }
         .icon-grid-item:hover, .texture-grid-item:hover { background-color: var(--border-color); }
-        .icon-grid-item .delete-custom-icon-btn { position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; padding: 0; font-size: 0.7rem; line-height: 18px; border-radius: 50%; display: none; }
-        .icon-grid-item:hover .delete-custom-icon-btn { display: flex; }
-        .texture-grid-item { display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 6px; cursor: pointer; transition: background-color var(--transition-short); padding: 5px; }
-        .texture-preview { width: 100%; height: 80px; border: 1px solid var(--border-color); border-radius: 4px; background-size: 20px; }
-        .texture-name { font-size: 0.75rem; margin-top: 5px; color: var(--text-secondary); text-align: center; }
+        。icon-grid-item .delete-custom-icon-btn { position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; padding: 0; font-size: 0.7rem; line-height: 18px; border-radius: 50%; display: none; }
+        。icon-grid-item:hover 。delete-custom-icon-btn { display: flex; }
+        。texture-grid-item { display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 6px; cursor: pointer; transition: background-color var(--transition-short); padding: 5px; }
+        。texture-preview { width: 100%; height: 80px; border: 1px solid var(--border-color); border-radius: 4px; background-size: 20px; }
+        。texture-name { font-size: 0.75rem; margin-top: 5px; color: var(--text-secondary); text-align: center; }
         #tag-manager-list { display: flex; flex-direction: column; gap: 10px; max-height: 250px; overflow-y: auto; padding: 10px; border: 1px solid var(--border-input); border-radius: 6px; background-color: var(--bg-input); margin-bottom: 15px; }
-        .tag-manager-item { display: flex; align-items: center; gap: 8px; background-color: var(--bg-section); padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); cursor: grab; }
-        .tag-manager-item .tag-icon-btn { flex-shrink: 0; width: 32px; height: 32px; padding: 0; font-size: 1.2rem; cursor: pointer; }
-        .tag-manager-item .tag-text-input { flex-grow: 1; border: none; background: transparent; padding: 4px 6px; cursor: text; }
-        .tag-manager-item .tag-delete-btn { flex-shrink: 0; width: 32px; height: 32px; padding: 0; cursor: pointer; }
-        .empty-tag-list { text-align: center; color: var(--text-placeholder); padding: 20px 0; }
-        .inset-controls { border: 1px solid var(--border-input); border-radius: 6px; padding: 15px; margin-top: 10px; background: var(--bg-input); }
-        #help-modal .tab-content { max-height: 60vh; overflow-y: auto; padding: 15px; }
+        。tag-manager-item { display: flex; align-items: center; gap: 8px; background-color: var(--bg-section); padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); cursor: grab; }
+        。tag-manager-item 。tag-icon-btn { flex-shrink: 0; width: 32px; height: 32px; padding: 0; font-size: 1.2rem; cursor: pointer; }
+        。tag-manager-item 。tag-text-input { flex-grow: 1; border: none; background: transparent; padding: 4px 6px; cursor: text; }
+        。tag-manager-item 。tag-delete-btn { flex-shrink: 0; width: 32px; height: 32px; padding: 0; cursor: pointer; }
+        。empty-tag-list { text-align: center; color: var(--text-placeholder); padding: 20px 0; }
+        。inset-controls { border: 1px solid var(--border-input); border-radius: 6px; padding: 15px; margin-top: 10px; background: var(--bg-input); }
+        #help-modal 。tab-content { max-height: 60vh; overflow-y: auto; padding: 15px; }
         #help-thanks .thanks-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
         #help-thanks .thanks-item:last-child { border-bottom: none; }
         #help-thanks h4 { margin-top: 0; margin-bottom: 8px; }
@@ -396,11 +396,11 @@
         #help-thanks summary { cursor: pointer; font-weight: 600; color: var(--text-action); }
         #help-thanks pre { white-space: pre-wrap; word-wrap: break-word; background: var(--bg-input); padding: 10px; border-radius: 6px; font-size: 0.8rem; max-height: 200px; overflow-y: auto; border: 1px solid var(--border-color); }
         
-        .palette-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); gap: 10px; margin-top: 10px; }
-        .palette-color { width: 100%; padding-top: 100%; border-radius: 8px; cursor: pointer; border: 2px solid var(--border-color); transition: transform var(--transition-short); position: relative; }
+        。palette-container { display: grid; grid-template-columns: repeat(auto-fit， minmax(40px, 1fr)); gap: 10px; margin-top: 10px; }
+        。palette-color { width: 100%; padding-top: 100%; border-radius: 8px; cursor: pointer; border: 2px solid var(--border-color); transition: transform var(--transition-short); position: relative; }
         .palette-color:hover { transform: scale(1.1); }
-        .color-tooltip { position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%); background: var(--bg-card); color: var(--text-primary); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; white-space: nowrap; box-shadow: var(--shadow-medium); opacity: 0; visibility: hidden; transition: opacity var(--transition-short); }
-        .palette-color:hover .color-tooltip { opacity: 1; visibility: visible; }
+        。color-tooltip { position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%); background: var(--bg-card); color: var(--text-primary); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; white-space: nowrap; box-shadow: var(--shadow-medium); opacity: 0; visibility: hidden; transition: opacity var(--transition-short); }
+        。palette-color:hover .color-tooltip { opacity: 1; visibility: visible; }
         #color-context-menu { position: fixed; z-index: 10000; background: var(--bg-editor); border: 1px solid var(--border-color); border-radius: 8px; box-shadow: var(--shadow-medium); padding: 5px; display: none; min-width: 180px;}
         #color-context-menu ul { list-style: none; margin: 0; padding: 0; }
         #color-context-menu li { padding: 8px 12px; cursor: pointer; border-radius: 4px; font-size: 0.9rem; }
@@ -413,15 +413,15 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
         @keyframes fadeOutScale { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.9); } }
-        .preview-header { animation: fadeIn 0.4s ease forwards; }
+        。preview-header { animation: fadeIn 0.4s ease forwards; }
         
         #mobile-layer-toggle, #mobile-inspector-toggle { display: none; }
 
         @media (max-width: 1024px) {
-            .app-header-title { display: none; } 
+            。app-header-title { display: none; } 
             #mobile-layer-toggle, #mobile-inspector-toggle { display: block; z-index: 201; }
-            .resizer { display: none; }
-            .layer-panel, .inspector-panel {
+            。resizer { display: none; }
+            。layer-panel, .inspector-panel {
                 position: fixed; top: var(--header-height);
                 width: 85%; max-width: 350px;
                 height: calc(100vh - var(--header-height)); z-index: 200;
@@ -1120,9 +1120,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
                     this.elements.cropperModal.querySelector('.crop-ratios').addEventListener('change', () => this.updateCropAspectRatio());
                     
                     this.elements.mobileLayerToggle.addEventListener('click', () => this.togglePanelDrawer('layer-panel'));
-                    this.elements.mobileInspectorToggle.addEventListener('click', () => this.togglePanelDrawer('inspector-panel'));
+                    this.elements。mobileInspectorToggle。addEventListener('click', () => this.togglePanelDrawer('inspector-panel'));
                     this.elements.previewPanel.addEventListener('click', (e) => {
-                        if (e.target === this.elements.previewPanel && this.elements.body.classList.contains('panels-open')) {
+                        if (e。target === this.elements.previewPanel && this.elements.body.classList.contains('panels-open')) {
                             this.togglePanelDrawer(false);
                         }
                     });
@@ -1138,35 +1138,35 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
                             const parent = tabBtn.closest('.modal-container');
                             parent.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
                             tabBtn.classList.add('active');
-                            parent.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                            parent.querySelectorAll('.tab-content')。forEach(content => content。classList。remove('active'));
                             const targetTab = parent.querySelector(`#${tabBtn.dataset.tab}`);
                             if (targetTab) targetTab.classList.add('active');
 
-                            this.elements.helpModalCloseBtn.textContent = (tabBtn.dataset.tab === 'help-tutorial') ? "我已了解，开始使用" : "关闭";
+                            this.elements。helpModalCloseBtn。textContent = (tabBtn。dataset。tab === 'help-tutorial') ? "我已了解，开始使用" : "关闭";
 
-                            if (tabBtn.dataset.tab === 'help-about') {
+                            if (tabBtn。dataset。tab === 'help-about') {
                                 clearTimeout(aboutClickTimer);
                                 aboutClickCount++;
                                 aboutClickTimer = setTimeout(() => aboutClickCount = 0, 2000);
                                 if (aboutClickCount >= 5) {
                                     aboutClickCount = 0;
                                     clearTimeout(aboutClickTimer);
-                                    this.activateDebugMode();
+                                    this。activateDebugMode();
                                 }
                             }
                         }
                     });
                     
-                    this.elements.iconPickerCloseBtn.addEventListener('click', () => this.hideIconPicker());
-                    this.elements.removeIconBtn.addEventListener('click', () => this.selectIcon(null));
-                    this.elements.iconSearch.addEventListener('input', this.debounce((e) => this.renderIconGrid(e.target.value), 300));
-                    this.elements.iconGrid.addEventListener('click', (e) => {
-                        const item = e.target.closest('.icon-grid-item');
+                    this。elements。iconPickerCloseBtn.addEventListener('click', () => this.hideIconPicker());
+                    this。elements。removeIconBtn。addEventListener('click', () => this.selectIcon(null));
+                    this。elements。iconSearch。addEventListener('input', this.debounce((e) => this.renderIconGrid(e.target.value), 300));
+                    this。elements.iconGrid。addEventListener('click'， (e) => {
+                        const item = e。target。closest('.icon-grid-item');
                         if (item) {
                             if (e.target.closest('.delete-custom-icon-btn')) {
-                                this.deleteCustomIcon(item.dataset.iconName);
+                                this。deleteCustomIcon(item。dataset.iconName);
                             } else {
-                                this.selectIcon(item.dataset.icon);
+                                this。selectIcon(item。dataset。icon);
                             }
                         }
                     });
@@ -2696,9 +2696,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
                         const createOptgroup = (label, fonts) => {
                             if (fonts.length === 0) return '';
                             const options = fonts
-                                .sort((a, b) => a.fullName.localeCompare(b.fullName))
-                                .map(f => `<option value="${this.escapeHTML(f.family)}" style="font-family: '${this.escapeHTML(f.family)}', sans-serif;" ${f.missing?'disabled':''}>${this.escapeHTML(f.fullName)}</option>`)
-                                .join('');
+                                。sort((a, b) => a.fullName.localeCompare(b.fullName))
+                                。map(f => `<option value="${this.escapeHTML(f.family)}" style="font-family: '${this.escapeHTML(f.family)}', sans-serif;" ${f.missing?'disabled':''}>${this.escapeHTML(f.fullName)}</option>`)
+                                。join('');
                             return `<optgroup label="${label}">${options}</optgroup>`;
                         };
 
@@ -3464,7 +3464,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
                         const iconHTML = tag.icon ? `<span class="iconify" data-icon="${tag.icon}"></span>` : '无';
                         return `<div class="tag-manager-item" data-tag-id="${tag.id}">
                             <button class="btn btn-default btn-icon tag-icon-btn">${iconHTML}</button>
-                            <input type="text" class="tag-text-input" value="${this.escapeHTML(tag.text)}">
+                            <input type="text" class="tag-text-input" value="${this。escapeHTML(tag.text)}">
                             <button class="btn btn-danger btn-icon tag-delete-btn"><span class="iconify" data-icon="mdi:delete"></span></button>
                         </div>`;
                     }).join('');
@@ -3523,7 +3523,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
                      if (this.state.customIcons && this.state.customIcons.length > 0) {
                          customIconsHTML = this.state.customIcons.map(icon => 
                             `<div class="icon-grid-item" data-icon="${icon.dataUrl}" data-icon-name="${icon.name}" title="${this.escapeHTML(icon.name)}">
-                                <img src="${icon.dataUrl}" style="width: 24px; height: 24px;">
+                                <img src="${icon。dataUrl}" style="width: 24px; height: 24px;">
                                 <button class="btn btn-icon btn-danger btn-small delete-custom-icon-btn" title="删除此图标">
                                     <span class="iconify" data-icon="mdi:delete"></span>
                                 </button>
@@ -3817,40 +3817,40 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
                     }
 
                     const insertIndex = sourceBlock ? this.findBlockIndex(sourceBlock.id) + 1 : this.state.blocks.length;
-                    this.state.blocks.splice(insertIndex, 0, newBlock);
+                    this。state。blocks.splice(insertIndex, 0, newBlock);
                     
-                    this.debouncedSaveToLocal();
-                    this.renderLayerPanel();
-                    this.renderPreviewBlocks();
-                    await this.sleep(10);
-                    this.setSelection({ type: 'block', id: newBlock.id });
+                    this。debouncedSaveToLocal();
+                    this。renderLayerPanel();
+                    this。renderPreviewBlocks();
+                    await this。sleep(10);
+                    this。setSelection({ type: 'block', id: newBlock.id });
                     
                     if (sourceBlock) this.showToast('样式已复制', 'success');
-                },
+                }，
                 async deleteBlock(blockId) {
                     if (await this.showConfirm('删除区块', '确定要删除这个区块吗？')) {
-                        this.pushHistory();
+                        this。pushHistory();
                         this.destroyMasonryForBlock(blockId);
-                        this.state.blocks = this.state.blocks.filter(b => b.id !== blockId);
+                        this.state.blocks = this。state.blocks。filter(b => b.id !== blockId);
                         this.debouncedSaveToLocal();
                         
-                        if (this.selection.type === 'block' && this.selection.id === blockId) {
+                        if (this.selection.输入 === 'block' && this.selection。id === blockId) {
                             this.setSelection({type: 'global'});
                         } 
                         
                         this.renderLayerPanel();
                         this.renderPreviewBlocks();
-                        this.showToast('区块已删除', 'info');
+                        this。showToast('区块已删除'， 'info');
                     }
-                },
+                }，
                 
                 toggleBlockVisibility(blockId) {
                     const blockIndex = this.findBlockIndex(blockId);
                     if (blockIndex > -1) {
-                        const currentVisibility = this.state.blocks[blockIndex].isVisible;
-                        this.updateState(`blocks.${blockIndex}.isVisible`, currentVisibility === false ? true : false, true);
+                        const currentVisibility = this.state。blocks[blockIndex]。isVisible;
+                        this。updateState(`blocks.${blockIndex}.isVisible`， currentVisibility === false ? true : false, true);
                     }
-                },
+                }，
                 
                 duplicateBlock(blockId) {
                     const block = this.findBlock(blockId);
@@ -3860,72 +3860,72 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
                 },
                 
                 async activateDebugMode() {
-                    if (await this.showConfirm('激活调试模式', '此操作将随机化当前所有设置并替换内容，此过程不可撤销。是否继续？')) {
-                        this.showLoading('正在生成随机数据...');
-                        this.state = this.generateRandomState();
+                    if (await this。showConfirm('激活调试模式', '此操作将随机化当前所有设置并替换内容，此过程不可撤销。是否继续？')) {
+                        this。showLoading('正在生成随机数据...');
+                        this。state = this.generateRandomState();
                         this.history = [this.deepClone(this.state)];
-                        this.historyIndex = 0;
-                        this.setSelection({type: 'global'});
-                        this.renderAll(true);
-                        this.syncAllControls();
-                        this.updateUndoRedoButtons();
+                        this。historyIndex = 0;
+                        this。setSelection({type: 'global'});
+                        this。renderAll(true);
+                        this。syncAllControls();
+                        this。updateUndoRedoButtons();
                         this.hideLoading();
                         this.showToast('调试模式已激活，所有设置已随机化！', 'success');
                     }
-                },
+                }，
                 generateRandomState() {
-                    const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-                    const randFloat = (min, max) => Math.random() * (max - min) + min;
-                    const randBool = () => Math.random() > 0.5;
-                    const randChoice = (arr) => arr[rand(0, arr.length - 1)];
-                    const safeColors = ['#e63946', '#f1faee', '#a8dadc', '#457b9d', '#1d3557', '#000000', '#ffffff'];
+                    const rand = (min, max) => Math。floor(Math.random() * (max - min + 1)) + min;
+                    const randFloat = (min, max) => Math。random() * (max - min) + min;
+                    const randBool = () => Math。random() > 0.5;
+                    const randChoice = (arr) => arr[rand(0， arr。length - 1)];
+                    const safeColors = ['#e63946', '#f1faee', '#a8dadc', '#457b9d', '#1d3557', '#000000'， '#ffffff'];
                     const randColor = () => randChoice(safeColors);
 
                     let randomState = this.deepClone(this.getDefaultState());
 
-                    randomState.personalInfo.nickname = "调试昵称";
-                    randomState.personalInfo.subtitle = `Debug Subtitle ${rand(100, 999)}`;
-                    randomState.personalInfo.bio = `这是随机生成的简介文本。 The quick brown fox jumps over the lazy dog.`;
-                    randomState.personalInfo.nicknameColor = randColor();
-                    randomState.personalInfo.subtitleColor = randColor();
-                    randomState.personalInfo.bioColor = randColor();
-                    randomState.personalInfo.avatarShape = randChoice(['50%', '16px', '0px']);
-                    randomState.personalInfo.avatarBorderSize = rand(0, 10);
-                    randomState.personalInfo.avatarBorderColor = randColor();
-                    randomState.personalInfo.tags = Array.from({length: rand(3, 5)}, (_, i) => ({ id: this.generateId('t'), icon: null, text: `标签${i+1}`}));
+                    randomState。personalInfo.nickname = "调试昵称";
+                    randomState。personalInfo.subtitle = `Debug Subtitle ${rand(100， 999)}`;
+                    randomState。personalInfo。bio = `这是随机生成的简介文本。 The quick brown fox jumps over the lazy dog.`;
+                    randomState。personalInfo.nicknameColor = randColor();
+                    randomState。personalInfo。subtitleColor = randColor();
+                    randomState。personalInfo。bioColor = randColor();
+                    randomState.personalInfo。avatarShape = randChoice(['50%'， '16px', '0px']);
+                    randomState.personalInfo。avatarBorderSize = rand(0， 10);
+                    randomState.personalInfo。avatarBorderColor = randColor();
+                    randomState。personalInfo。标签 = Array.from({length: rand(3, 5)}, (_, i) => ({ id: this.generateId('t'), icon: null, text: `标签${i+1}`}));
                     randomState.personalInfo.tagBgColor = randColor();
                     randomState.personalInfo.tagTextColor = randColor();
-                    randomState.pageStyles.pageBgMode = randChoice(['solid', 'gradient']);
-                    randomState.pageStyles.pageBgSolidColor = randColor();
-                    randomState.globalCardStyles.bgColor = randColor();
-                    randomState.globalCardStyles.textColor = randColor();
+                    randomState。pageStyles。pageBgMode = randChoice(['solid', 'gradient']);
+                    randomState.pageStyles。pageBgSolidColor = randColor();
+                    randomState.globalCardStyles。bgColor = randColor();
+                    randomState。globalCardStyles。textColor = randColor();
                     randomState.globalCardStyles.shadowEnabled = false;
 
-                    randomState.blocks = [];
-                    const blockTypes = ['text', 'image', 'separator', 'spacer'];
-                    for (let i = 0; i < rand(5, 8); i++) {
-                        const type = randChoice(blockTypes);
+                    randomState。blocks = [];
+                    const blockTypes = ['text'， 'image'， 'separator'， 'spacer'];
+                    for (let i = 0; i < rand(5， 8); i++) {
+                        const 输入 = randChoice(blockTypes);
                         let newBlock;
                         switch(type) {
                             case 'text':
-                                newBlock = { id: this.generateId('b'), isVisible: true, type: 'text', title: `随机文本区块 ${i+1}`, settings: { layout: randChoice(['single', 'dual', 'triple']), masonryEnabled: randBool() }, cards: Array.from({length: rand(2, 5)}, (_, j) => ({ id: this.generateId('c'), icon: '', title: `随机卡片 ${j+1}`, content: `随机内容 - ${Math.random().toString(36).substring(2)}`, opacity: 1.0, followGlobalOpacity: true })) };
+                                newBlock = { id: this.generateId('b')， isVisible: true, type: 'text', title: `随机文本区块 ${i+1}`, settings: { layout: randChoice(['single', 'dual', 'triple']), masonryEnabled: randBool() }, cards: Array.from({length: rand(2, 5)}, (_, j) => ({ id: this.generateId('c'), icon: '', title: `随机卡片 ${j+1}`, content: `随机内容 - ${Math.random().toString(36).substring(2)}`, opacity: 1.0, followGlobalOpacity: true })) };
                                 break;
                             case 'image':
-                                newBlock = { id: this.generateId('b'), isVisible: true, type: 'image', title: `随机图片区块 ${i+1}`, settings: { layout: randChoice(['single', 'dual', 'triple']), masonryEnabled: randBool(), textColor: randColor() }, cards: [] };
+                                newBlock = { id: this.generateId('b')， isVisible: true, type: 'image', title: `随机图片区块 ${i+1}`, settings: { layout: randChoice(['single', 'dual', 'triple']), masonryEnabled: randBool(), textColor: randColor() }, cards: [] };
                                 break;
                             case 'separator':
-                                newBlock = { id: this.generateId('b'), isVisible: true, type: 'separator', title: `随机分割线 ${i+1}`, settings: { style: randChoice(['solid', 'dashed', 'dotted']), color: randColor(), thickness: rand(1, 5), margin: rand(10, 40), text: 'Random Text', icon: null, textColor: randColor() }};
+                                newBlock = { id: this。generateId('b')， isVisible: true, type: 'separator', title: `随机分割线 ${i+1}`, settings: { style: randChoice(['solid', 'dashed', 'dotted']), color: randColor(), thickness: rand(1, 5), margin: rand(10, 40), text: 'Random Text', icon: null, textColor: randColor() }};
                                 break;
                             case 'spacer':
                                 newBlock = { id: this.generateId('b'), isVisible: true, type: 'spacer', title: `随机留白 ${i+1}`, settings: { height: rand(20, 100) }};
                                 break;
                         }
-                        randomState.blocks.push(newBlock);
+                        randomState。blocks。push(newBlock);
                     }
                     return randomState;
                 }
             };
-            App.init();
+            App。init();
         });
     </script>
 </body>
