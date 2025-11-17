@@ -4324,6 +4324,7 @@
                     const mobileExportToggle = this.elements.inspectorPanel.querySelector('#mobile-export-toggle');
                     const customWidthToggle = this.elements.inspectorPanel.querySelector('#custom-width-toggle');
                     const hdExportToggle = this.elements.inspectorPanel.querySelector('#hd-export-toggle');
+                    const s = this.state.exportSettings;
 
                     const isMobileExport = mobileExportToggle.checked;
                     const isCustomWidth = customWidthToggle.checked;
