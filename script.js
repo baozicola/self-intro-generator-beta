@@ -4328,8 +4328,9 @@
                     const isMobileExport = mobileExportToggle.checked;
                     const isCustomWidth = customWidthToggle.checked;
                     const isHD = hdExportToggle.checked;
-
+                    
                     const sourceElement = this.elements.previewWrapper;
+                    // NEW: Use the actual element's dimensions for scaling calculation
                     const sourceWidth = sourceElement.offsetWidth;
                     const sourceHeight = sourceElement.offsetHeight;
 
@@ -4352,7 +4353,6 @@
                     }
 
                     const scale = targetWidth / sourceWidth;
-                    const renderSourceHeight = targetHeight / scale;
 
                     const exportRounded = this.elements.inspectorPanel.querySelector('#export-rounded-corners-toggle').checked;
                     const cornerRadius = parseInt(this.elements.inspectorPanel.querySelector('#export-corner-radius-input').value, 10) || 20;
@@ -4372,6 +4372,7 @@
                         clone = sourceElement.cloneNode(true);
                         clone.id = `export-clone-${Date.now()}`;
 
+                        // NEW: Watermark/Attribution logic
                         const showAttribution = this.elements.inspectorPanel.querySelector('#export-attribution-toggle').checked;
                         if (showAttribution) {
                             const attr = this.state.pageStyles.pageBgImageAttribution;
@@ -4407,12 +4408,16 @@
                         clone.style.left = '-9999px';
                         clone.style.top = '0px';
                         clone.style.borderRadius = '0';
-                        clone.style.maxWidth = 'none';
+                        // ...
+clone.style.width = `${sourceWidth}px`;
+clone.style.maxWidth = 'none';
+if (isCustomWidth && !s.lockAspectRatio) {
+    const cloneHeight = targetHeight / scale;
+    clone.style.height = `${cloneHeight}px`;
+    clone.style.overflow = 'hidden'; 
+}
 
-                        clone.style.width = `${sourceWidth}px`;
-                        clone.style.height = `${renderSourceHeight}px`;
-
-                        document.body.appendChild(clone);
+document.body.appendChild(clone);
                         await this.sleep(100);
 
                         this.showLoading('正在计算瀑布流布局...');
@@ -4438,17 +4443,15 @@
                         this.showLoading('正在渲染图片...');
 
                         const canvas = await html2canvas(clone, {
-                            scale: scale,
-                            useCORS: true,
-                            backgroundColor: null,
-                            logging: false,
-                            width: sourceWidth,
-                            height: renderSourceHeight,
-                            windowWidth: sourceWidth,
-                            windowHeight: renderSourceHeight,
-                        });
+    scale: scale,
+    useCORS: true,
+    backgroundColor: null,
+    logging: false
+});
                         
+                        const g = this.state.globalCardStyles;
                         let finalCanvas = canvas;
+
 
                         if (exportRounded && cornerRadius > 0) {
                             this.showLoading('正在应用圆角...');
